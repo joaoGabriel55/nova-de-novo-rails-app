@@ -7,7 +7,7 @@ development:
   <<: *default
   username: <%= ENV.fetch("POSTGRES_USER") { "admin" } %>
   password: <%= ENV.fetch("POSTGRES_PASSWORD") { "admin" } %>
-  host: db-development
+  host: localhost
   port: 5432
   database: nova_de_novo_development
   #schema_search_path: myapp,sharedapp,public
@@ -16,7 +16,7 @@ test:
   <<: *default
   username: <%= ENV.fetch("POSTGRES_USER") { "admin" } %>
   password: <%= ENV.fetch("POSTGRES_PASSWORD") { "admin" } %>
-  host: db-test
+  host: localhost
   port: 5432
   database: nova_de_novo_test
 

@@ -1,24 +1,29 @@
-# README
+# Nova de novo - Management
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+Up docker containers
+```sh
+./scripts/run.sh
+```
 
-* Ruby version
+If you want to stop db containers
+```sh
+./scripts/down.sh
+```
 
-* System dependencies
+Install gems
+```sh
+bundle install
+```
 
-* Configuration
+Deploy app locally
+```sh
+./bin/dev
+```
 
-* Database creation
+# Running tests
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```sh
+rspec
+```
