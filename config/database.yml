@@ -1,0 +1,27 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  username: <%= ENV.fetch("POSTGRES_USER") { "admin" } %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { "admin" } %>
+  host: db-development
+  port: 5432
+  database: nova_de_novo_development
+  #schema_search_path: myapp,sharedapp,public
+  #min_messages: notice
+test:
+  <<: *default
+  username: <%= ENV.fetch("POSTGRES_USER") { "admin" } %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { "admin" } %>
+  host: db-test
+  port: 5432
+  database: nova_de_novo_test
+
+production:
+  <<: *default
+  database: nova_de_novo_production
+  username: nova_de_novo
+  password: <%= ENV["NOVA_DE_NOVO_DATABASE_PASSWORD"] %>
