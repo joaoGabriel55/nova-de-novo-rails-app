@@ -1,5 +1,7 @@
-Rails.application.routes.draw do
-  root "customers#index" # TODO: Add a dashboard
+# frozen_string_literal: true
 
-  get "/customers", to: "customers#index"
+Rails.application.routes.draw do
+  root 'customers#index' # TODO: Add a dashboard
+
+  get '/customers', to: 'customers#index'
 end
