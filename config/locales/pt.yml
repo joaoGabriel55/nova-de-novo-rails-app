@@ -16,6 +16,15 @@
 
 pt:
   hello: "Olá mundo!"
+  customers:
+    new: "Novo Cliente"
+    index: "Clientes"
+  service_orders:
+    new: "Nova Ordem de Serviço"
+    index: "Ordens de Serviços"
+  dressmakers:
+    new: "Registrar nova Costureira"
+    index: "Costureiras"
   activerecord:
     errors:
       models:
