@@ -1,3 +1,35 @@
 <%= render 'layouts/main_wrapper', title: t('customers.index') do %>
-    <h1>Customers#index</h1>
+  <div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr class='text-left'>
+            <th scope="col" class="px-6 py-3"><%= t('customers.table.name') %></th>
+            <th scope="col" class="px-6 py-3"><%= t('customers.table.phone_number') %></th>
+            <th scope="col" class="px-6 py-3"><%= t('customers.table.whatsapp_number') %></th>
+            <th scope="col" class="px-6 py-3"><%= t('customers.table.email') %></th>
+            <th scope="col" class="px-6 py-3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              Carla Lutero
+            </th>
+            <td class="px-6 py-4">(84) 99999-9999</td>
+            <td class="px-6 py-4">(84) 99999-9999</td>
+            <td class="px-6 py-4">test@test.com</td>
+            <td class="px-6 py-4">
+              <div class='flex justify-end gap-4'>
+                <button title="<%= t('common.edit') %>" type="button">
+                  <span class="material-symbols-outlined text-blue-500">edit</span>
+                </button>
+                <button title="<%= t('common.delete') %>" type="button">
+                  <span class="material-symbols-outlined text-red-500">delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
 <% end %>

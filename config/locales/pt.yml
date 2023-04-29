@@ -15,10 +15,18 @@
 #     I18n.locale = :es
 
 pt:
-  hello: "Olá mundo!"
+  common:
+    edit: "Editar"
+    delete: "Excluir"
   customers:
     new: "Novo Cliente"
     index: "Clientes"
+    table:
+      name: "Nome"
+      phone_number: "Número de telefone"
+      whatsapp_number: "Número de Whatsapp"
+      email: "Email"
+
   service_orders:
     new: "Nova Ordem de Serviço"
     index: "Ordens de Serviços"

@@ -6,13 +6,75 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
   </head>
-  <body>
-    <div class="min-h-full">
+  <body class='dark:bg-gray-900'>
+    <div class="min-h-full relative ">
       <%= render "layouts/navbar" %>
       <%= yield %>
     </div>
+    <button id="theme-toggle" type="button" class="absolute border-2 border-gray-100 dark:border-gray-500 rounded-full bottom-10 right-10 p-5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700">
+      <div id="theme-toggle-dark-icon" class="flex hidden">
+        <span class='material-symbols-outlined'>dark_mode</span>
+      </div>
+      <div id="theme-toggle-light-icon" class="flex hidden">
+        <span class='material-symbols-outlined'>light_mode</span>
+      </div>
+    </button>
   </body>
+  <script>
+    const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+    const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+      themeToggleLightIcon.classList.remove('hidden');
+    } else {
+      document.documentElement.classList.remove('dark')
+      themeToggleDarkIcon.classList.remove('hidden');
+    }
+
+    const themeToggleBtn = document.getElementById('theme-toggle');
+
+    themeToggleBtn.addEventListener('click', function() {
+      // if set via local storage previously
+      if (localStorage.getItem('color-theme')) {
+          if (localStorage.getItem('color-theme') === 'light') {
+              document.documentElement.classList.add('dark');
+
+              themeToggleDarkIcon.classList.add('hidden');
+              themeToggleLightIcon.classList.remove('hidden');
+
+              localStorage.setItem('color-theme', 'dark');
+          } else {
+              document.documentElement.classList.remove('dark');
+
+              themeToggleDarkIcon.classList.remove('hidden');
+              themeToggleLightIcon.classList.add('hidden');
+
+              localStorage.setItem('color-theme', 'light');
+          }
+      // if NOT set via local storage previously
+      } else {
+          if (document.documentElement.classList.contains('dark')) {
+              document.documentElement.classList.remove('dark');
+
+              themeToggleDarkIcon.classList.add('hidden');
+              themeToggleLightIcon.classList.remove('hidden');
+
+              localStorage.setItem('color-theme', 'light');
+          } else {
+              document.documentElement.classList.add('dark');
+
+              themeToggleDarkIcon.classList.remove('hidden');
+              themeToggleLightIcon.classList.add('hidden');
+
+              localStorage.setItem('color-theme', 'dark');
+          }
+      }
+    });
+  </script>
 </html>
