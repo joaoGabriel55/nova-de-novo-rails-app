@@ -1,8 +1,10 @@
 FactoryBot.define do
   factory :customer do
+    fake_phone_number = Faker::PhoneNumber.cell_phone
+
     name { Faker::Name.unique.name }
-    birth_date { "Fri, 11 Apr 2023 00:00:00 UTC +00:00" }
-    start_working_date { "Fri, 11 Apr 2023 00:00:00 UTC +00:00" }
-    end_working_date { "Fri, 11 Apr 2023 00:00:00 UTC +00:00" }
+    email { Faker::Internet.email }
+    whatsapp { fake_phone_number }
+    phone_number { fake_phone_number }
   end
 end

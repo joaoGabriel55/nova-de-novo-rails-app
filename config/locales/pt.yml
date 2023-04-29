@@ -16,3 +16,10 @@
 
 pt:
   hello: "Olá mundo!"
+  activerecord:
+    errors:
+      models:
+        customer:
+          attributes:
+            phone_number:
+              blank: "Número de telefone é obrigatório"

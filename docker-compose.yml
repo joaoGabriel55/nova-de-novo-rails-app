@@ -1,24 +1,11 @@
 version: "3"
 
 services:
-  db-development:
+services:
+  db:
     image: postgres
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: nova_de_novo_development
-    volumes:
-      - ./data/db-development:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-
-  db-test:
-    image: postgres
-    environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin
-      POSTGRES_DB: nova_de_novo_test
-    volumes:
-      - ./data/db-test:/var/lib/postgresql/data
-    ports:
-      - "5433:5432"
