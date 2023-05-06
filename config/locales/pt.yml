@@ -26,6 +26,9 @@ pt:
       phone_number: "Número de telefone"
       whatsapp_number: "Número de Whatsapp"
       email: "Email"
+    errors:
+      create: "Ocorreu um erro ao salvar o cliente"
+      update: "Ocorreu um erro ao atualizar o cliente"
 
   service_orders:
     new: "Nova Ordem de Serviço"
@@ -33,10 +36,14 @@ pt:
   dressmakers:
     new: "Registrar nova Costureira"
     index: "Costureiras"
+
   activerecord:
     errors:
+      messages:
+        record_invalid: "Ocorreu um erro ao salvar o registro"
       models:
         customer:
+          record_invalid: "Ocorreu um erro ao salvar o cliente"
           attributes:
             phone_number:
               blank: "Número de telefone é obrigatório"
