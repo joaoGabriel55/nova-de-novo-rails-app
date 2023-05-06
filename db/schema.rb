@@ -18,9 +18,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_423_231_435) do
 
   create_table 'customers', force: :cascade do |t|
     t.string 'name', null: false
-    t.datetime 'email'
-    t.datetime 'whatsapp'
-    t.datetime 'phone_number', null: false
+    t.string 'email'
+    t.string 'whatsapp'
+    t.string 'phone_number', null: false
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
