@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Customer, type: :model do
   describe 'validations' do
-    let(:customer) { FactoryBot.build(:customer) }
+    let(:customer) { FactoryBot.build(:customer, :address) }
 
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:phone_number) }
@@ -18,5 +18,9 @@ RSpec.describe Customer, type: :model do
       customer.phone_number = nil
       expect(customer).to_not be_valid
     end
+  end
+
+  describe 'associations' do
+    it { should have_one(:address) }
   end
 end
