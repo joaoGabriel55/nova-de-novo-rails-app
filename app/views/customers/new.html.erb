@@ -1,0 +1,37 @@
+<%= render 'layouts/main_wrapper', title: t('customers.new'), back_link: '/customers' do %>
+<%= form_with(model: @customer) do |form| %>
+  <div class="mb-6">
+    <%= form.label :name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+      <%= t('customers.fields.name') %>*
+    <% end %>
+    <%= form.text_field :name, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+  </div>
+  <div class="flex gap-4">
+    <div class="mb-6 w-full">
+      <%= form.label :phone_number, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+        <%= t('customers.fields.phone_number') %>*
+      <% end %>
+      <%= form.text_field :phone_number, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+    </div>
+    <div class="mb-6 w-full">
+      <%= form.label :whatsapp, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+        <%= t('customers.fields.whatsapp_number') %>
+      <% end %>
+      <%= form.text_field :whatsapp, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+    </div>
+  </div>
+  <div class="mb-6">
+    <%= form.label :email, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+      <%= t('customers.fields.email') %>
+    <% end %>
+    <%= form.email_field :email, placeholder: 'email@gmail.com', class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+  </div>
+  <p class='dark:text-white my-4'><%= t('common.required_fields') %></p>
+  <hr class='py-4'>
+  <div class='flex w-full justify-end'>
+    <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+        <%= t('common.submit') %>
+    </button>
+  </div>
+<% end %>
+<% end %>

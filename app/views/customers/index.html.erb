@@ -1,35 +1,52 @@
 <%= render 'layouts/main_wrapper', title: t('customers.index') do %>
-  <div class="relative overflow-x-auto">
+  <div class="relative overflow-x-auto p-2 flex flex-col gap-2">
+    <div class='flex justify-between items-center'>
+      <span class='dark:text-white'>
+        <%= t('customers.customers_number') %>: <strong><%= @customers_count %></strong>
+      </span>
+      <a href='/customers/new'>
+        <button type="button" class="text-white w-fit bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+          <%= t('customers.new_customer') %>
+        </button>
+      </a>
+    </div>
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr class='text-left'>
-            <th scope="col" class="px-6 py-3"><%= t('customers.table.name') %></th>
-            <th scope="col" class="px-6 py-3"><%= t('customers.table.phone_number') %></th>
-            <th scope="col" class="px-6 py-3"><%= t('customers.table.whatsapp_number') %></th>
-            <th scope="col" class="px-6 py-3"><%= t('customers.table.email') %></th>
-            <th scope="col" class="px-6 py-3"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-            <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-              Carla Lutero
-            </th>
-            <td class="px-6 py-4">(84) 99999-9999</td>
-            <td class="px-6 py-4">(84) 99999-9999</td>
-            <td class="px-6 py-4">test@test.com</td>
-            <td class="px-6 py-4">
-              <div class='flex justify-end gap-4'>
-                <button title="<%= t('common.edit') %>" type="button">
-                  <span class="material-symbols-outlined">edit</span>
-                </button>
-                <button title="<%= t('common.delete') %>" type="button">
-                  <span class="material-symbols-outlined text-red-500">delete</span>
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr class='text-left'>
+          <th scope="col" class="px-6 py-3"><%= t('customers.fields.name') %></th>
+          <th scope="col" class="px-6 py-3"><%= t('customers.fields.phone_number') %></th>
+          <th scope="col" class="px-6 py-3"><%= t('customers.fields.whatsapp_number') %></th>
+          <th scope="col" class="px-6 py-3"><%= t('customers.fields.email') %></th>
+          <th scope="col" class="px-6 py-3"><%= t('customers.created_at') %></th>
+          <th scope="col" class="px-6 py-3"><%= t('customers.updated_at') %></th>
+          <th scope="col" class="px-6 py-3"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @customers.each do |customer| %>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <%= customer.name %>
+          </th>
+          <td class="px-6 py-4"><%= customer.phone_number %></td>
+          <td class="px-6 py-4"><%= customer.whatsapp %></td>
+          <td class="px-6 py-4"><%= customer.email %></td>
+          <td class="px-6 py-4"><%= customer.created_at.strftime('%d/%m/%Y %H:%M') %></td>
+          <td class="px-6 py-4"><%= customer.updated_at.strftime('%d/%m/%Y %H:%M') %></td>
+          <td class="px-6 py-4">
+            <div class='flex justify-end gap-4'>
+              <button title="<%= t('common.edit') %>" type="button">
+                <span class="material-symbols-outlined">edit</span>
+              </button>
+              <button title="<%= t('common.delete') %>" type="button">
+                <span class="material-symbols-outlined text-red-500">delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
     </table>
+    <%= will_paginate @customers, total_entries: @customers_number, class: 'flex dark:text-white justify-center gap-3' %>
   </div>
 <% end %>

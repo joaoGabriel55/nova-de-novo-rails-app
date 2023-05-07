@@ -39,6 +39,6 @@ module NovaDeNovo
     config.i18n.available_locales = %i[pt en]
     config.i18n.default_locale = :pt
 
-    # Faker::Config.locale = 'pt-BR'
+    config.time_zone = 'Brasilia'
   end
 end

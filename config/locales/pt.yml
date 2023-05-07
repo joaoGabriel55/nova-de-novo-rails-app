@@ -18,11 +18,18 @@ pt:
   common:
     edit: "Editar"
     delete: "Excluir"
+    back: "Voltar"
+    required_fields: "Campos com * são obrigatórios"
+    submit: "Confirmar"
+    created_at: "Criado em"
+    updated_at: "Atualizado em"
   customers:
-    new: "Novo Cliente"
     index: "Clientes"
-    table:
-      name: "Nome"
+    new: "Novo Cliente"
+    new_customer: "Cadastrar cliente"
+    customers_number: "Número de clientes"
+    fields:
+      name: "Nome completo"
       phone_number: "Número de telefone"
       whatsapp_number: "Número de Whatsapp"
       email: "Email"

@@ -11,7 +11,9 @@ RSpec.describe Customers::PaginateCustomers, type: :service do
   describe '#call' do
     context 'when has customers in page 1' do
       it 'returns customers' do
-        expect(paginate_customers.call).to eq(customers[0..9])
+        result = paginate_customers.call
+
+        expect(result[:data]).to eq(customers[0..9])
       end
     end
 
@@ -19,7 +21,9 @@ RSpec.describe Customers::PaginateCustomers, type: :service do
       let(:page) { 2 }
 
       it 'returns customers' do
-        expect(paginate_customers.call).to eq(customers[10..19])
+        result = paginate_customers.call
+
+        expect(result[:data]).to eq(customers[10..19])
       end
     end
 
@@ -27,7 +31,7 @@ RSpec.describe Customers::PaginateCustomers, type: :service do
       let(:page) { 3 }
 
       it 'returns customers' do
-        expect(paginate_customers.call).to eq([])
+        expect(paginate_customers.call[:data]).to eq([])
       end
     end
   end
