@@ -4,6 +4,8 @@ class CustomersController < ApplicationController
   before_action :set_customers, only: %i[index]
 
   def index
+    @search_count = 0
+
     set_customers
   end
 
@@ -27,10 +29,15 @@ class CustomersController < ApplicationController
     params.require(:customer).permit(:name, :email, :phone_number, :whatsapp)
   end
 
+  def search_term
+    @search_term = (params[:search] if params[:search].present?)
+  end
+
   def set_customers
-    result = Customers::PaginateCustomers.new(page: params[:page]).call
+    result = Customers::SearchPaginateCustomers.new(search_term:, page: params[:page]).call
 
     @customers ||= result[:data] || []
     @customers_count = result[:count]
+    @search_count = result[:search_count]
   end
 end

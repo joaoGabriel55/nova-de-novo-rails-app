@@ -23,11 +23,17 @@ pt:
     submit: "Confirmar"
     created_at: "Criado em"
     updated_at: "Atualizado em"
+    search: "Buscar"
   customers:
     index: "Clientes"
+    search: "Digite aqui para buscar clientes"
+    empty: "Não há clientes cadastrados"
+    empty_search: "Nenhum cliente encontrado"
+    show_all: "Mostrar todos"
     new: "Novo Cliente"
     new_customer: "Cadastrar cliente"
-    customers_number: "Número de clientes"
+    customers_number: "Número total de clientes"
+    search_customers_number: "Número total de clientes buscados"
     fields:
       name: "Nome completo"
       phone_number: "Número de telefone"
