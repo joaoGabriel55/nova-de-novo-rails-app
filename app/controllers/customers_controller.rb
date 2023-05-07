@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CustomersController < ApplicationController
-  before_action :set_customers, only: %i[index create]
+  before_action :set_customers, only: %i[index]
 
   def index
     set_customers
@@ -16,7 +16,7 @@ class CustomersController < ApplicationController
 
     Customers::CreateCustomer.new(customer: @customer).call
 
-    render :index
+    redirect_to customers_path
   rescue Customers::CreateCustomerError
     render :new
   end
