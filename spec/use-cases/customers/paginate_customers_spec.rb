@@ -7,13 +7,14 @@ RSpec.describe Customers::PaginateCustomers, type: :service do
   let(:page) { 1 }
   let(:per_page) { 10 }
   let(:customers) { FactoryBot.create_list(:customer, 20) }
+  let(:expected_customers) { Customer.paginate(page:, per_page:).order(created_at: :desc) }
 
   describe '#call' do
     context 'when has customers in page 1' do
       it 'returns customers' do
         result = paginate_customers.call
 
-        expect(result[:data]).to eq(customers[0..9])
+        expect(result[:data]).to eq(expected_customers)
       end
     end
 
@@ -23,7 +24,7 @@ RSpec.describe Customers::PaginateCustomers, type: :service do
       it 'returns customers' do
         result = paginate_customers.call
 
-        expect(result[:data]).to eq(customers[10..19])
+        expect(result[:data]).to eq(expected_customers)
       end
     end
 
