@@ -17,15 +17,68 @@
       <%= form.label :whatsapp, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
         <%= t('customers.fields.whatsapp_number') %>
       <% end %>
-      <%= form.text_field :whatsapp, required: true, onkeypress:"$(this).mask('(99) 99999-9999')", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+      <%= form.text_field :whatsapp, onkeypress:"$(this).mask('(99) 99999-9999')", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+    </div>
+    <div class="mb-6 w-full">
+      <%= form.label :email, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+        <%= t('customers.fields.email') %>
+      <% end %>
+      <%= form.email_field :email, placeholder: 'email@gmail.com', class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
     </div>
   </div>
-  <div class="mb-6">
-    <%= form.label :email, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
-      <%= t('customers.fields.email') %>
-    <% end %>
-    <%= form.email_field :email, placeholder: 'email@gmail.com', class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
-  </div>
+  <h3 class='dark:text-white font-semibold pb-4'><%= t('customers.fields.address_section') %></h3>
+  <%= form.fields_for :address do |address_form| %>
+    <div class="flex gap-4">
+      <div class="mb-6 w-20">
+        <%= address_form.label "#{t('customers.fields.address.state')}*", class: 'block uppercase mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+        <%= address_form.select :state,
+                        options_for_select(@states || []),
+                        { include_blank: false },
+                        class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500',
+                        id: 'states' %>
+      </div>
+      <div class="mb-6 w-1/5">
+        <%= address_form.label "#{t('customers.fields.address.city')}*", class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+        <%= address_form.select :city,
+                        options_for_select(@cities || []),
+                        { include_blank: false },
+                        class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500',
+                        id: 'cities' %>
+      </div>
+      <div class="mb-6 w-1/4">
+        <%= address_form.label :zip_code, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+          <%= t('customers.fields.address.zip_code') %>
+        <% end %>
+        <%= address_form.text_field :zip_code, onkeypress:"$(this).mask('99999-999')", class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+      </div>
+    </div>
+    <div class="flex gap-4">
+      <div class="mb-6 w-full">
+        <%= address_form.label :street, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+          <%= t('customers.fields.address.street') %>*
+        <% end %>
+        <%= address_form.text_field :street, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+      </div>
+      <div class="mb-6 w-full">
+        <%= address_form.label :neighborhood, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+          <%= t('customers.fields.address.neighborhood') %>*
+        <% end %>
+        <%= address_form.text_field :neighborhood, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+      </div>
+      <div class="mb-6">
+        <%= address_form.label :number, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+          <%= t('customers.fields.address.number') %>*
+        <% end %>
+        <%= address_form.text_field :number, required: true, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+      </div>
+    </div>
+    <div class="mb-6 w-full">
+      <%= address_form.label :complement, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+        <%= t('customers.fields.address.complement') %>
+      <% end %>
+      <%= address_form.text_field :complement, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" %>
+    </div>
+  <% end %>
   <p class='dark:text-white my-4'><%= t('common.required_fields') %></p>
   <hr class='py-4'>
   <div class='flex w-full justify-end'>

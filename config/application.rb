@@ -40,5 +40,7 @@ module NovaDeNovo
     config.i18n.default_locale = :pt
 
     config.time_zone = 'Brasilia'
+
+    config.autoload_paths += %W[#{config.root}/app]
   end
 end

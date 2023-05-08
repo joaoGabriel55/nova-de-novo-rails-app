@@ -7,10 +7,14 @@ RSpec.describe Customers::CreateCustomer, type: :service do
 
   describe '#call' do
     context 'when the customer is valid' do
-      let(:customer) { FactoryBot.build(:customer) }
+      let(:customer) { FactoryBot.build(:customer, :address) }
 
       it 'creates a new customer' do
         expect { create_customer.call }.to change { Customer.count }.by(1)
+      end
+
+      it 'creates a new address' do
+        expect { create_customer.call }.to change { Address.count }.by(1)
       end
     end
 
@@ -25,6 +29,10 @@ RSpec.describe Customers::CreateCustomer, type: :service do
 
       it 'does not create a new customer' do
         expect(Customer.count).to be(0)
+      end
+
+      it 'does not create a new address' do
+        expect(Address.count).to be(0)
       end
     end
   end

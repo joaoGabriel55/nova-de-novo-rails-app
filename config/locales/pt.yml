@@ -39,6 +39,15 @@ pt:
       phone_number: "Número de telefone"
       whatsapp_number: "Número de Whatsapp"
       email: "Email"
+      address_section: "Endereço do cliente"
+      address:
+        state: "UF"
+        city: "Cidade"
+        zip_code: "CEP"
+        street: "Rua"
+        neighborhood: "Bairro"
+        number: "Número"
+        complement: "Complemento"
     errors:
       create: "Ocorreu um erro ao salvar o cliente"
       update: "Ocorreu um erro ao atualizar o cliente"

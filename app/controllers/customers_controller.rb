@@ -11,7 +11,13 @@ class CustomersController < ApplicationController
 
   def new
     @customer = Customer.new
+    @customer.build_address
+
+    @states = StateCitiesService.states || []
+    @cities = StateCitiesService.cities || []
   end
+
+  # TODO: show/edit
 
   def create
     @customer = Customer.new(customer_params)
@@ -26,7 +32,12 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name, :email, :phone_number, :whatsapp)
+    params.require(:customer).permit(
+      :id, :name, :email, :phone_number, :whatsapp,
+      address_attributes: %i[
+        street city state zip_code number complement
+      ]
+    )
   end
 
   def search_term
