@@ -67,6 +67,8 @@ group :development, :test do
 end
 
 group :test do
+  gem 'apparition'
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'faker', '~> 3.2'
   gem 'shoulda-matchers', '~> 5.0'
