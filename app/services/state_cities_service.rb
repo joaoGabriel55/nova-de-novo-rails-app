@@ -2,45 +2,12 @@
 
 class StateCitiesService
   def self.states
-    # HttpClient.get("#{ENV['API_STATES']}/estados")
-    [
-      {
-        "id": 11,
-        "sigla": 'RN',
-        "nome": 'Rondônia',
-        "regiao": {
-          "id": 1,
-          "sigla": 'N',
-          "nome": 'Norte'
-        }
-      }
-    ].map { |state| state[:sigla] }
+    response = HttpClient.get("#{ENV['API_LOCALITIES']}/estados")
+    JSON.parse(response.body).map { |state| state['sigla'] }.sort
   end
 
-  def self.cities(_state = 'RN')
-    [
-      {
-        "id": 2_400_109,
-        "nome": 'Natal',
-        "microrregiao": {
-          "id": 24_012,
-          "nome": 'Seridó Oriental',
-          "mesorregiao": {
-            "id": 2402,
-            "nome": 'Central Potiguar',
-            "UF": {
-              "id": 24,
-              "sigla": 'RN',
-              "nome": 'Rio Grande do Norte',
-              "regiao": {
-                "id": 2,
-                "sigla": 'NE',
-                "nome": 'Nordeste'
-              }
-            }
-          }
-        }
-      }
-    ].map { |state| state[:nome] }
+  def self.cities(state = 'RN')
+    response = HttpClient.get("#{ENV['API_LOCALITIES']}/estados/#{state}/municipios")
+    JSON.parse(response.body).map { |city| city['nome'] }
   end
 end

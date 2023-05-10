@@ -4,23 +4,23 @@ require 'rails_helper'
 
 RSpec.describe Customer, type: :model do
   describe 'validations' do
-    let(:customer) { FactoryBot.build(:customer, :address) }
+    let(:customer) { FactoryBot.build(:customer) }
 
-    it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:phone_number) }
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:phone_number) }
+    it { is_expected.to validate_presence_of(:address) }
+    it { is_expected.to accept_nested_attributes_for(:address) }
 
-    it 'is not valid without a name' do
-      customer.name = nil
-      expect(customer).to_not be_valid
-    end
+    context 'when address is invalid' do
+      it 'is not valid' do
+        customer.address.neighborhood = nil
 
-    it 'is not valid without a phone number' do
-      customer.phone_number = nil
-      expect(customer).to_not be_valid
+        expect(customer).not_to be_valid
+      end
     end
   end
 
   describe 'associations' do
-    it { should have_one(:address) }
+    it { is_expected.to have_one(:address) }
   end
 end

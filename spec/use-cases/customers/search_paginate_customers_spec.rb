@@ -8,7 +8,7 @@ RSpec.describe Customers::SearchPaginateCustomers, type: :service do
   let(:per_page) { 10 }
   let(:search_term) { nil }
   let(:customers) { FactoryBot.create_list(:customer, 20) }
-  let!(:searchble_customers) do
+  let!(:searchable_customers) do
     FactoryBot.create(:customer, name: 'John Doe')
     FactoryBot.create(:customer, name: 'Jose Doe')
     FactoryBot.create(:customer, name: 'Joaque Doe')

@@ -48,9 +48,9 @@ pt:
         neighborhood: "Bairro"
         number: "Número"
         complement: "Complemento"
-    errors:
-      create: "Ocorreu um erro ao salvar o cliente"
-      update: "Ocorreu um erro ao atualizar o cliente"
+    # errors:
+    #   create: "Ocorreu um erro ao salvar o cliente"
+    #   update: "Ocorreu um erro ao atualizar o cliente"
 
   service_orders:
     new: "Nova Ordem de Serviço"
@@ -60,12 +60,21 @@ pt:
     index: "Costureiras"
 
   activerecord:
+    models:
+      customer: "Cliente"
+      address: "Endereço"
+    attributes:
+      customer:
+        name: "Nome"
+        phone_number: "Número de telefone"
+      address:
+        neighborhood: "Bairro"
+        number: "Número"
     errors:
       messages:
-        record_invalid: "Ocorreu um erro ao salvar o registro"
+        blank: "é obrigatório"
       models:
         customer:
-          record_invalid: "Ocorreu um erro ao salvar o cliente"
           attributes:
-            phone_number:
-              blank: "Número de telefone é obrigatório"
+            address:
+              invalid: "inválido"

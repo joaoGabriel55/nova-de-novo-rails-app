@@ -2,6 +2,7 @@
 
 class CustomersController < ApplicationController
   before_action :set_customers, only: %i[index]
+  before_action :load_states_and_cities, only: %i[new create]
 
   def index
     @search_count = 0
@@ -12,9 +13,6 @@ class CustomersController < ApplicationController
   def new
     @customer = Customer.new
     @customer.build_address
-
-    @states = StateCitiesService.states || []
-    @cities = StateCitiesService.cities || []
   end
 
   # TODO: show/edit
@@ -35,7 +33,7 @@ class CustomersController < ApplicationController
     params.require(:customer).permit(
       :id, :name, :email, :phone_number, :whatsapp,
       address_attributes: %i[
-        street city state zip_code number complement
+        street city state zip_code neighborhood number complement
       ]
     )
   end
@@ -50,5 +48,10 @@ class CustomersController < ApplicationController
     @customers ||= result[:data] || []
     @customers_count = result[:count]
     @search_count = result[:search_count]
+  end
+
+  def load_states_and_cities
+    @states = StateCitiesService.states || []
+    @cities = StateCitiesService.cities || []
   end
 end

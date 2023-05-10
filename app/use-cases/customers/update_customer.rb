@@ -2,18 +2,19 @@
 
 module Customers
   class UpdateCustomer
-    def initialize(customer:)
+    def initialize(customer:, attributes:)
       @customer = customer
+      @attributes = attributes
     end
 
     def call
-      Customer.update!(customer.attributes)
+      customer.update!(attributes)
     rescue ActiveRecord::RecordInvalid
       raise Customers::UpdateCustomerError
     end
 
     private
 
-    attr_accessor :customer
+    attr_accessor :customer, :attributes
   end
 end

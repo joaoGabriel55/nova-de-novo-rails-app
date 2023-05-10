@@ -103,6 +103,7 @@ GEM
     foreman (0.87.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    htmlbeautifier (1.4.2)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.6)
@@ -266,6 +267,7 @@ DEPENDENCIES
   faker (~> 3.2)
   faraday
   foreman (~> 0.87.2)
+  htmlbeautifier
   importmap-rails
   jbuilder
   pg (~> 1.1)

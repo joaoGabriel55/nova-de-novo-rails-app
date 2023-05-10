@@ -3,24 +3,20 @@
 require 'rails_helper'
 
 RSpec.describe Customers::UpdateCustomer, type: :service do
-  subject(:update_customer) { described_class.new(customer:) }
+  subject(:update_customer) { described_class.new(customer:, attributes:) }
+  let(:customer) { FactoryBot.create(:customer) }
 
   describe '#call' do
-    context 'when the customer is valid' do
-      let(:customer) { FactoryBot.create(:customer) }
+    context 'when the customer attributes are valid' do
+      let(:attributes) { { name: 'John Updated' } }
 
       it 'updates the customer' do
         expect { update_customer.call }.to change { Customer.count }.by(1)
       end
     end
 
-    context 'when the customer is invalid' do
-      let(:customer) do
-        created_customer = FactoryBot.create(:customer)
-        created_customer.phone_number = nil
-
-        created_customer
-      end
+    context 'when the customer attributes are invalid' do
+      let(:attributes) { { name: nil } }
 
       it 'raises a UpdateCustomerError' do
         expect do
