@@ -72,6 +72,7 @@ group :test do
   gem 'database_cleaner'
   gem 'faker', '~> 3.2'
   gem 'shoulda-matchers', '~> 5.0'
+  gem 'vcr', '~> 6.1'
 end
 
 group :development do
