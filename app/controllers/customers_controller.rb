@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class CustomersController < ApplicationController
-  before_action :set_customers, only: %i[index]
-  before_action :load_states_and_cities, only: %i[new create]
+  before_action :load_states_and_cities, only: %i[new create edit show]
+  before_action :load_customer, only: %i[show update]
 
   def index
     @search_count = 0
@@ -15,7 +15,7 @@ class CustomersController < ApplicationController
     @customer.build_address
   end
 
-  # TODO: show/edit
+  def show; end
 
   def create
     @customer = Customer.new(customer_params)
@@ -26,6 +26,15 @@ class CustomersController < ApplicationController
     redirect_to customers_path
   rescue Customers::CreateCustomerError
     render :new
+  end
+
+  def update
+    Customers::UpdateCustomer.new(customer: @customer, attributes: customer_params).call
+
+    flash[:notice] = I18n.t('customers.success_update')
+    redirect_to customers_path
+  rescue Customers::UpdateCustomerError
+    render :show
   end
 
   private
@@ -54,5 +63,9 @@ class CustomersController < ApplicationController
   def load_states_and_cities
     @states ||= StateCitiesService.states || []
     @cities ||= StateCitiesService.cities || []
+  end
+
+  def load_customer
+    @customer ||= Customers::FindCustomer.new(id: params[:id]).call
   end
 end

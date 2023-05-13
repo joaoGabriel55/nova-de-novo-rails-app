@@ -31,10 +31,12 @@ pt:
     empty_search: "Nenhum cliente encontrado"
     show_all: "Mostrar todos"
     new: "Novo Cliente"
+    edit: "Editar Cliente"
     new_customer: "Cadastrar cliente"
     customers_number: "Número total de clientes"
     search_customers_number: "Número total de clientes buscados"
     success_create: "Cliente cadastrado com sucesso"
+    success_update: "Cliente atualizado com sucesso"
     fields:
       name: "Nome completo"
       phone_number: "Número de telefone"
@@ -49,6 +51,10 @@ pt:
         neighborhood: "Bairro"
         number: "Número"
         complement: "Complemento"
+    errors:
+      update: "Erro ao atualizar cliente"
+      create: "Erro ao cadastrar cliente"
+      not_found: "Cliente não encontrado"
 
   service_orders:
     new: "Nova Ordem de Serviço"

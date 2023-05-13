@@ -29,10 +29,10 @@ RSpec.feature 'customers/new.html.erb', type: :feature do
       fill_in 'customer_address_attributes_number', with: '123'
       fill_in 'customer_address_attributes_complement', with: 'Apartment 4'
 
-      click_button 'Confirmar'
+      click_button I18n.t('common.submit')
     end
 
-    expect(page).to have_content('Cliente cadastrado com sucesso')
+    expect(page).to have_content(I18n.t('customers.success_create'))
     expect(Customer.last.name).to eq('John Doe')
   end
 end
