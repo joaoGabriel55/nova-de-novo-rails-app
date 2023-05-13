@@ -1,0 +1,78 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+
+pt:
+  common:
+    edit: "Editar"
+    delete: "Excluir"
+    back: "Voltar"
+    required_fields: "Campos com * são obrigatórios"
+    submit: "Confirmar"
+    created_at: "Criado em"
+    updated_at: "Atualizado em"
+    search: "Buscar"
+  customers:
+    index: "Clientes"
+    search: "Digite aqui para buscar clientes"
+    empty: "Não há clientes cadastrados"
+    empty_search: "Nenhum cliente encontrado"
+    show_all: "Mostrar todos"
+    new: "Novo Cliente"
+    new_customer: "Cadastrar cliente"
+    customers_number: "Número total de clientes"
+    search_customers_number: "Número total de clientes buscados"
+    success_create: "Cliente cadastrado com sucesso"
+    fields:
+      name: "Nome completo"
+      phone_number: "Número de telefone"
+      whatsapp_number: "Número de Whatsapp"
+      email: "Email"
+      address_section: "Endereço do cliente"
+      address:
+        state: "UF"
+        city: "Cidade"
+        zip_code: "CEP"
+        street: "Rua"
+        neighborhood: "Bairro"
+        number: "Número"
+        complement: "Complemento"
+
+  service_orders:
+    new: "Nova Ordem de Serviço"
+    index: "Ordens de Serviços"
+  dressmakers:
+    new: "Registrar nova Costureira"
+    index: "Costureiras"
+
+  activerecord:
+    models:
+      customer: "Cliente"
+      address: "Endereço"
+    attributes:
+      customer:
+        name: "Nome"
+        phone_number: "Número de telefone"
+      address:
+        neighborhood: "Bairro"
+        number: "Número"
+    errors:
+      messages:
+        blank: "é obrigatório"
+      models:
+        customer:
+          attributes:
+            address:
+              invalid: "inválido"

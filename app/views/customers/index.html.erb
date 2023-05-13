@@ -1,2 +1,86 @@
-<h1>Customers#index</h1>
-<p>Find me in app/views/customers/index.html.erb</p>
+<%= render 'layouts/main_wrapper', title: t('customers.index') do %>
+  <% if flash[:notice] %>
+    <%= render 'shared/toast', message: flash[:notice] %>
+  <% end %>
+  <div class="relative overflow-x-auto p-2 flex flex-col gap-2">
+    <div class='flex justify-between items-center'>
+      <% if @customers.present? %>
+        <span class='dark:text-white'>
+          <%= t('customers.customers_number') %>: <strong><%= @customers_count %></strong>
+        </span>
+      <% end %>
+      <% if @search_count.present? && @search_count > 0 %>
+        <div class='mx-2'></div>
+        <span class='dark:text-white'>
+          <%= t('customers.search_customers_number') %>: <strong><%= @search_count %></strong>
+        </span>
+      <% end %>
+      <a href='/customers/new' class='ml-auto'>
+        <button type="button" class="text-white w-fit bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+          <%= t('customers.new_customer') %>
+        </button>
+      </a>
+    </div>
+    <%= form_with(url: customers_path, method: :get) do |form| %>
+      <%= form.label :search, "Search", class: "mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white" %>
+      <div class="relative my-4">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        </div>
+        <%= form.search_field :search, placeholder: t('customers.search'), required: true, value: @search_term, class: "block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-secondary-500 focus:border-secondary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-secondary-500 dark:focus:border-secondary-500"%>
+        <% if @search_term.present? %>
+          <a href="/customers" class="font-medium absolute right-24 mr-2 bottom-4 text-primary-600 dark:text-primary-500 hover:underline">
+            <%= t('customers.show_all') %>
+          </a>
+        <% end %>
+        <%= form.submit t('common.search'), class: "cursor-pointer text-white absolute right-2.5 bottom-2.5 bg-secondary-700 hover:bg-secondary-800 focus:ring-4 focus:outline-none focus:ring-secondary-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-secondary-600 dark:hover:bg-secondary-700 dark:focus:ring-secondary-800" %>
+      </div>
+    <% end %>
+    <% if @customers.empty? %>
+      <div class="border rounded-lg my-10 border-gray-300">
+        <p class='text-2xl text-center p-10 border-1 dark:text-white'>
+          <%= @search_count.present? && @search_count == 0 ? t('customers.empty_search') : t('customers.empty') %> :-(
+        </p>
+      </div>
+    <% else %>
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr class='text-left'>
+            <th scope="col" class="px-6 py-3"><%= t('customers.fields.name') %></th>
+            <th scope="col" class="px-6 py-3"><%= t('customers.fields.phone_number') %></th>
+            <th scope="col" class="px-6 py-3"><%= t('customers.fields.whatsapp_number') %></th>
+            <th scope="col" class="px-6 py-3"><%= t('customers.fields.email') %></th>
+            <th scope="col" class="px-6 py-3"><%= t('common.created_at') %></th>
+            <th scope="col" class="px-6 py-3"><%= t('common.updated_at') %></th>
+            <th scope="col" class="px-6 py-3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @customers.each do |customer| %>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+              <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <%= customer.name %>
+              </th>
+              <td class="px-6 py-4"><%= customer.phone_number %></td>
+              <td class="px-6 py-4"><%= customer.whatsapp %></td>
+              <td class="px-6 py-4"><%= customer.email %></td>
+              <td class="px-6 py-4"><%= customer.created_at.strftime('%d/%m/%Y %H:%M') %></td>
+              <td class="px-6 py-4"><%= customer.updated_at.strftime('%d/%m/%Y %H:%M') %></td>
+              <td class="px-6 py-4">
+                <div class='flex justify-end gap-4'>
+                  <button title="<%= t('common.edit') %>" type="button">
+                    <span class="material-symbols-outlined">edit</span>
+                  </button>
+                  <button title="<%= t('common.delete') %>" type="button">
+                    <span class="material-symbols-outlined text-red-500">delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+    <%= will_paginate @customers, total_entries: @customers_number, class: 'flex dark:text-white justify-center gap-3' %>
+  </div>
+<% end %>

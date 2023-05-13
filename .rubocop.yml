@@ -1,0 +1,12 @@
+Style/Documentation:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+

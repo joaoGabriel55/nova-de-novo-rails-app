@@ -1,5 +1,14 @@
-Rails.application.routes.draw do
-  root "customers#index" # TODO: Add a dashboard
+# frozen_string_literal: true
 
-  get "/customers", to: "customers#index"
+Rails.application.routes.draw do
+  root 'customers#index' # TODO: Add a dashboard
+
+  resources :customers, only: %i[index new create edit]
+
+  namespace :api do
+    namespace :v1 do
+      get 'states', to: 'states_and_cities#states'
+      get 'states/:state', to: 'states_and_cities#state_cities'
+    end
+  end
 end

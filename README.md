@@ -4,12 +4,7 @@
 
 Up docker containers
 ```sh
-./scripts/run.sh
-```
-
-If you want to stop db containers
-```sh
-./scripts/down.sh
+docker compose up -d
 ```
 
 Install gems

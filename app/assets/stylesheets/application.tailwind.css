@@ -11,3 +11,8 @@
 }
 
 */
+
+/* Pagination current page link */
+.current {
+  @apply bg-primary-500 text-white px-2 rounded-full not-italic;
+}
