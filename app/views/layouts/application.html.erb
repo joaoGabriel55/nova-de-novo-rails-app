@@ -21,14 +21,6 @@
       <%= render "layouts/navbar" %>
       <%= yield %>
     </div>
-    <button id="theme-toggle" type="button" class="absolute border-2 border-gray-100 dark:border-gray-500 rounded-full bottom-10 right-10 p-5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700">
-      <div id="theme-toggle-dark-icon" class="flex hidden">
-        <span class='material-symbols-outlined'>dark_mode</span>
-      </div>
-      <div id="theme-toggle-light-icon" class="flex hidden">
-        <span class='material-symbols-outlined'>light_mode</span>
-      </div>
-    </button>
   </body>
   <script>
     const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');

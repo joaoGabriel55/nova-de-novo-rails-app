@@ -12,6 +12,7 @@ RSpec.describe Customers::UpdateCustomer, type: :service do
 
       it 'updates the customer' do
         expect { update_customer.call }.to change { Customer.count }.by(1)
+        expect(Customer.last.name).to eq('John Updated')
       end
     end
 

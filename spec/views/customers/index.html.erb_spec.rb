@@ -6,14 +6,14 @@ RSpec.describe 'customers/index.html.erb', type: :feature do
   it 'displays Clientes header' do
     visit '/customers'
 
-    expect(page).to have_selector('h1', text: 'Clientes')
+    expect(page).to have_selector('h1', text: I18n.t('customers.index'))
   end
 
   context 'when there no customers' do
     it 'displays no customers message' do
       visit '/customers'
 
-      expect(page).to have_selector('p', text: 'Não há clientes cadastrados')
+      expect(page).to have_selector('p', text: I18n.t('customers.empty'))
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe 'customers/index.html.erb', type: :feature do
     it 'shows total number of customers' do
       visit '/customers'
 
-      expect(page).to have_selector('span', text: 'Número total de clientes: 3')
+      expect(page).to have_selector('span', text: "#{I18n.t('customers.customers_number')}: 3")
     end
   end
 end
