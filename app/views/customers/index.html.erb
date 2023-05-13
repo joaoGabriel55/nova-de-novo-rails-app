@@ -68,14 +68,14 @@
               <td class="px-6 py-4"><%= customer.updated_at.strftime('%d/%m/%Y %H:%M') %></td>
               <td class="px-6 py-4">
                 <div class='flex justify-end gap-4'>
-                  <a href=<%= "/customers/#{customer.id}" %>>
+                  <a id="edit-<%= customer.id %>" href=<%= "/customers/#{customer.id}" %>>
                     <button title="<%= t('common.edit') %>" type="button">
                       <span class="material-symbols-outlined">edit</span>
                     </button>
                   </a>
-                  <button title="<%= t('common.delete') %>" type="button">
-                    <span class="material-symbols-outlined text-red-500">delete</span>
-                  </button>
+                  <%= button_to customer, method: :delete, id: "delete-#{customer.id}", title: t('common.delete') do %>
+                    <%= content_tag :span, "delete", class: "material-symbols-outlined text-red-500" %>
+                  <% end %>
                 </div>
               </td>
             </tr>

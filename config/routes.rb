@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   root 'customers#index' # TODO: Add a dashboard
 
-  resources :customers, only: %i[index new create show update]
+  resources :customers
 
   namespace :api do
     namespace :v1 do

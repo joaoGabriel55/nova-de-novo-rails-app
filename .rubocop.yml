@@ -8,5 +8,7 @@ Naming/MemoizedInstanceVariableName:
   Enabled: false
 Style/ClassAndModuleChildren:
   Enabled: false
+Metrics/AbcSize:
+  Enabled: false
 
 

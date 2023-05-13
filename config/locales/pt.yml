@@ -37,6 +37,7 @@ pt:
     search_customers_number: "Número total de clientes buscados"
     success_create: "Cliente cadastrado com sucesso"
     success_update: "Cliente atualizado com sucesso"
+    success_destroy: "Cliente excluído com sucesso"
     fields:
       name: "Nome completo"
       phone_number: "Número de telefone"
@@ -55,6 +56,7 @@ pt:
       update: "Erro ao atualizar cliente"
       create: "Erro ao cadastrar cliente"
       not_found: "Cliente não encontrado"
+      delete: "Erro ao excluir cliente"
 
   service_orders:
     new: "Nova Ordem de Serviço"

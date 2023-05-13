@@ -37,6 +37,17 @@ class CustomersController < ApplicationController
     render :show
   end
 
+  def destroy
+    Customers::DeleteCustomer.new(id: params[:id]).call
+
+    flash[:notice] = I18n.t('customers.success_destroy')
+
+    redirect_to customers_path
+  rescue Customers::DeleteCustomerError => e
+    flash[:error] = e.message
+    redirect_to customers_path
+  end
+
   private
 
   def customer_params

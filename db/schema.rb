@@ -35,6 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_507_154_832) do
     t.string 'email'
     t.string 'whatsapp'
     t.string 'phone_number', null: false
+    t.datetime 'deleted_at'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
