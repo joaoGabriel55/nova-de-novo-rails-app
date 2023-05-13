@@ -6,6 +6,7 @@ FactoryBot.define do
     email { Faker::Internet.email }
     whatsapp { Faker::PhoneNumber.cell_phone }
     phone_number { Faker::PhoneNumber.phone_number }
+    deleted_at { nil }
 
     trait :invalid_attributes do
       name { nil }

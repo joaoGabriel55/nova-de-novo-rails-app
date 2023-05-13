@@ -10,6 +10,8 @@ class Customer < ApplicationRecord
   has_one :address, dependent: :destroy
   accepts_nested_attributes_for :address
 
+  scope :activated, -> { where(deleted_at: nil) }
+
   pg_search_scope :search_by_name,
                   against: :name,
                   using: {

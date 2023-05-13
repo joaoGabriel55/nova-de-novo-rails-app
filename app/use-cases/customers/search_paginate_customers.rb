@@ -8,13 +8,14 @@ module Customers
       @search_term = search_term
       @page = page
       @per_page = per_page
+      customers_active
     end
 
     def call
-      total_customers = Customer.count
+      total_customers = customers.count
 
       if search_term.present?
-        searched_customers = Customer.search_by_name(search_term)
+        searched_customers = customers.search_by_name(search_term)
         {
           search_count: searched_customers.size,
           count: total_customers,
@@ -23,13 +24,17 @@ module Customers
       else
         {
           count: total_customers,
-          data: Customer.paginate(page:, per_page:).order(created_at: :desc)
+          data: customers.paginate(page:, per_page:).order(created_at: :desc)
         }
       end
     end
 
     private
 
-    attr_reader :search_term, :page, :per_page
+    attr_reader :search_term, :page, :per_page, :customers
+
+    def customers_active
+      @customers ||= Customer.activated
+    end
   end
 end
