@@ -95,3 +95,26 @@
     </div>
   <% end %>
 <% end %>
+<script>
+  const stateSelect = document.getElementById('states')
+
+  stateSelect.addEventListener('change', () => {
+    const selectedState = stateSelect.value;
+
+    fetch(`/api/v1/states/${selectedState}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const citySelect = document.getElementById('cities');
+
+        while (citySelect.options.length > 0) citySelect.remove(0);
+
+        data.forEach((city, index) => {
+          const option = document.createElement('option');
+          option.text = city;
+          option.value = city;
+
+          citySelect.appendChild(option)
+        })
+      })
+  })
+</script>

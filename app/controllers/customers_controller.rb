@@ -22,6 +22,7 @@ class CustomersController < ApplicationController
 
     Customers::CreateCustomer.new(customer: @customer).call
 
+    flash[:notice] = I18n.t('customers.success_create')
     redirect_to customers_path
   rescue Customers::CreateCustomerError
     render :new
@@ -51,7 +52,7 @@ class CustomersController < ApplicationController
   end
 
   def load_states_and_cities
-    @states = StateCitiesService.states || []
-    @cities = StateCitiesService.cities || []
+    @states ||= StateCitiesService.states || []
+    @cities ||= StateCitiesService.cities || []
   end
 end

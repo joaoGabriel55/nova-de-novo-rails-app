@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# TODO: handle errors and use stub request for test (GEM)
-
 class StateCitiesService
   def self.states
     response = HttpClient.get("#{ENV['API_LOCALITIES']}/estados")

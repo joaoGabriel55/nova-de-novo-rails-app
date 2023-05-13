@@ -34,6 +34,7 @@ pt:
     new_customer: "Cadastrar cliente"
     customers_number: "Número total de clientes"
     search_customers_number: "Número total de clientes buscados"
+    success_create: "Cliente cadastrado com sucesso"
     fields:
       name: "Nome completo"
       phone_number: "Número de telefone"
@@ -48,9 +49,6 @@ pt:
         neighborhood: "Bairro"
         number: "Número"
         complement: "Complemento"
-    # errors:
-    #   create: "Ocorreu um erro ao salvar o cliente"
-    #   update: "Ocorreu um erro ao atualizar o cliente"
 
   service_orders:
     new: "Nova Ordem de Serviço"
