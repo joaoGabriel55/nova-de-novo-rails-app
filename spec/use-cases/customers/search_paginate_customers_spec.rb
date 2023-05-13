@@ -14,8 +14,9 @@ RSpec.describe Customers::SearchPaginateCustomers, type: :service do
     FactoryBot.create(:customer, name: 'Joaque Doe')
     FactoryBot.create(:customer, name: 'Maria Lion')
     FactoryBot.create(:customer, name: 'Mary Foo')
+    FactoryBot.create(:customer, name: 'Shadow', deleted_at: Time.now)
   end
-  let(:expected_customers) { Customer.paginate(page:, per_page:).order(created_at: :desc) }
+  let(:expected_customers) { Customer.activated.paginate(page:, per_page:).order(created_at: :desc) }
 
   describe '#call' do
     context 'when has customers in page 1' do
@@ -73,6 +74,14 @@ RSpec.describe Customers::SearchPaginateCustomers, type: :service do
 
       it 'returns 2 customers length' do
         expect(search_paginate_customers.call[:data].size).to eq(1)
+      end
+    end
+
+    context 'when search term is equal to "Shadow"' do
+      let(:search_term) { 'Shadow' }
+
+      it 'returns 0 customers' do
+        expect(search_paginate_customers.call[:data].size).to eq(0)
       end
     end
   end
