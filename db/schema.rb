@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_507_154_832) do
+ActiveRecord::Schema[7.0].define(version: 20_230_513_230_409) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -36,6 +36,15 @@ ActiveRecord::Schema[7.0].define(version: 20_230_507_154_832) do
     t.string 'whatsapp'
     t.string 'phone_number', null: false
     t.datetime 'deleted_at'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+  end
+
+  create_table 'dressmakers', force: :cascade do |t|
+    t.string 'name', null: false
+    t.integer 'max_service_quantity', null: false
+    t.datetime 'start_working_date', null: false
+    t.datetime 'end_working_date'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end
