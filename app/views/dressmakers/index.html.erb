@@ -1,0 +1,10 @@
+<%= render 'layouts/main_wrapper', title: t('dressmakers.index') do %>
+  <% if flash[:notice] %>
+    <%= render 'shared/toast', message: flash[:notice] %>
+  <% end %>
+  <% if @dressmakers.empty? %>
+    <%= render 'shared/empty_message', message: t('dressmakers.empty') %>
+  <% else %>
+    Table
+  <% end %>
+<% end %>

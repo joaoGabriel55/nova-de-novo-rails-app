@@ -37,11 +37,9 @@
       </div>
     <% end %>
     <% if @customers.empty? %>
-      <div class="border rounded-lg my-10 border-gray-300">
-        <p class='text-2xl text-center p-10 border-1 dark:text-white'>
-          <%= @search_count.present? && @search_count == 0 ? t('customers.empty_search') : t('customers.empty') %> :-(
-        </p>
-      </div>
+      <%= render 'shared/empty_message',
+        message: @search_count.present? && @search_count == 0 ? t('customers.empty_search') : t('customers.empty')
+      %>
     <% else %>
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -70,19 +68,19 @@
                 <div class='flex justify-end gap-4'>
                   <a id="edit-<%= customer.id %>" href=<%= "/customers/#{customer.id}" %>>
                     <button title="<%= t('common.edit') %>" type="button">
-                      <span class="material-symbols-outlined">edit</span>
-                    </button>
-                  </a>
-                  <%= button_to customer, method: :delete, id: "delete-#{customer.id}", title: t('common.delete') do %>
-                    <%= content_tag :span, "delete", class: "material-symbols-outlined text-red-500" %>
-                  <% end %>
-                </div>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <% end %>
-    <%= will_paginate @customers, total_entries: @customers_number, class: 'flex dark:text-white justify-center gap-3' %>
-  </div>
+                    <span class="material-symbols-outlined">edit</span>
+                  </button>
+                </a>
+                <%= button_to customer, method: :delete, id: "delete-#{customer.id}", title: t('common.delete') do %>
+                  <%= content_tag :span, "delete", class: "material-symbols-outlined text-red-500" %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <%= will_paginate @customers, total_entries: @customers_number, class: 'flex dark:text-white justify-center gap-3' %>
+</div>
 <% end %>
