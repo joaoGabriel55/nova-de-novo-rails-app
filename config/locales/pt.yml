@@ -64,11 +64,17 @@ pt:
   dressmakers:
     new: "Registrar nova Costureira"
     index: "Costureiras"
+    errors:
+      update: "Erro ao atualizar costureira"
+      create: "Erro ao cadastrar costureira"
+      not_found: "Costureira não encontrada"
+      delete: "Erro ao excluir costureira"
 
   activerecord:
     models:
       customer: "Cliente"
       address: "Endereço"
+      dressmaker: "Costureira"
     attributes:
       customer:
         name: "Nome"
@@ -76,6 +82,8 @@ pt:
       address:
         neighborhood: "Bairro"
         number: "Número"
+      dressmaker:
+        end_working_date: "Data de demissão"
     errors:
       messages:
         blank: "é obrigatório"
@@ -84,3 +92,7 @@ pt:
           attributes:
             address:
               invalid: "inválido"
+        dressmaker:
+          attributes:
+            end_working_date:
+              greater_than: "anterior à data de contratação"

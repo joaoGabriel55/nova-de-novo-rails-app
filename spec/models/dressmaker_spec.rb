@@ -21,6 +21,17 @@ RSpec.describe Dressmaker, type: :model do
         dressmaker.end_working_date = Date.today - 1.year
 
         expect(dressmaker).not_to be_valid
+        expect(dressmaker.errors[:end_working_date]).to include(
+          I18n.t('activerecord.errors.models.dressmaker.attributes.end_working_date.greater_than')
+        )
+      end
+    end
+
+    context 'end_working_date is not present' do
+      it 'is still valid' do
+        dressmaker.end_working_date = nil
+
+        expect(dressmaker).to be_valid
       end
     end
   end
