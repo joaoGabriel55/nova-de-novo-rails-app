@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'customers#index' # TODO: Add a dashboard
 
   resources :customers
+  resources :dressmakers
 
   namespace :api do
     namespace :v1 do

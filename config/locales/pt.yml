@@ -64,6 +64,7 @@ pt:
   dressmakers:
     new: "Registrar nova Costureira"
     index: "Costureiras"
+    empty: "Não há costureiras cadastradas"
     errors:
       update: "Erro ao atualizar costureira"
       create: "Erro ao cadastrar costureira"
