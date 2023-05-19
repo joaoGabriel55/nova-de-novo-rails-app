@@ -80,11 +80,7 @@
   <% end %>
   <p class='dark:text-white my-4'><%= t('common.required_fields') %></p>
   <% if @customer.errors.present? %>
-    <ul class="list-disc pl-4">
-      <% @customer.errors.full_messages.each do |message| %>
-        <li class='text-red-600 font-semibold pb-2'><%= message %></li>
-      <% end %>
-    </ul>
+    <%= render 'shared/error_messages', errors: @customer.errors.full_messages %>
   <% end %>
   <hr class='py-4'>
   <div class='flex w-full justify-end'>

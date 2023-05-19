@@ -19,12 +19,12 @@ module Customers
         {
           search_count: searched_customers.size,
           count: total_customers,
-          data: searched_customers.paginate(page:, per_page:).order(created_at: :desc)
+          data: searched_customers.paginate(page:, per_page:)
         }
       else
         {
           count: total_customers,
-          data: customers.paginate(page:, per_page:).order(created_at: :desc)
+          data: customers.paginate(page:, per_page:)
         }
       end
     end
@@ -34,7 +34,7 @@ module Customers
     attr_reader :search_term, :page, :per_page, :customers
 
     def customers_active
-      @customers ||= Customer.activated
+      @customers ||= Customer.activated.order(created_at: :desc)
     end
   end
 end
