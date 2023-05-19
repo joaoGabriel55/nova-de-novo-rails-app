@@ -63,13 +63,23 @@ pt:
     index: "Ordens de Serviços"
   dressmakers:
     new: "Registrar nova Costureira"
+    edit: "Editar Costureira"
     index: "Costureiras"
-    empty: "Não há costureiras cadastradas"
+    empty: "Não há Costureiras cadastradas"
+    dressmakers_number: "Número total de Costureiras"
+    success_create: "Costureira cadastrada com sucesso"
+    success_update: "Costureira atualizada com sucesso"
+    success_destroy: "Costureira excluída com sucesso"
+    fields:
+      name: "Nome"
+      max_service_quantity: "Qtd. máxima de serviços"
+      start_working_date: "Data de contratação"
+      end_working_date: "Data de demissão"
     errors:
-      update: "Erro ao atualizar costureira"
-      create: "Erro ao cadastrar costureira"
+      update: "Erro ao atualizar Costureira"
+      create: "Erro ao cadastrar Costureira"
       not_found: "Costureira não encontrada"
-      delete: "Erro ao excluir costureira"
+      delete: "Erro ao excluir Costureira"
 
   activerecord:
     models:
@@ -84,6 +94,8 @@ pt:
         neighborhood: "Bairro"
         number: "Número"
       dressmaker:
+        start_working_date: "Data de contratação"
+        max_service_quantity: "Qtd. máxima de serviços"
         end_working_date: "Data de demissão"
     errors:
       messages:
@@ -95,5 +107,9 @@ pt:
               invalid: "inválido"
         dressmaker:
           attributes:
+            start_working_date:
+              less_than_or_equal_to: "deve ser anterior ou igual à data de hoje"
+            max_service_quantity:
+              greater_than: "deve ser maior que zero"
             end_working_date:
               greater_than: "anterior à data de contratação"

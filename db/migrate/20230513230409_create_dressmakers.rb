@@ -5,8 +5,8 @@ class CreateDressmakers < ActiveRecord::Migration[7.0]
     create_table :dressmakers do |t|
       t.string :name, null: false
       t.integer :max_service_quantity, null: false
-      t.datetime :start_working_date, null: false
-      t.datetime :end_working_date
+      t.date :start_working_date, null: false
+      t.date :end_working_date
 
       t.timestamps
     end

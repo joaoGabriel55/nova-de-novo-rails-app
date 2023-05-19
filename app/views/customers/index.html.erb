@@ -41,46 +41,43 @@
         message: @search_count.present? && @search_count == 0 ? t('customers.empty_search') : t('customers.empty')
       %>
     <% else %>
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr class='text-left'>
-            <th scope="col" class="px-6 py-3"><%= t('customers.fields.name') %></th>
-            <th scope="col" class="px-6 py-3"><%= t('customers.fields.phone_number') %></th>
-            <th scope="col" class="px-6 py-3"><%= t('customers.fields.whatsapp_number') %></th>
-            <th scope="col" class="px-6 py-3"><%= t('customers.fields.email') %></th>
-            <th scope="col" class="px-6 py-3"><%= t('common.created_at') %></th>
-            <th scope="col" class="px-6 py-3"><%= t('common.updated_at') %></th>
-            <th scope="col" class="px-6 py-3"></th>
-          </tr>
-        </thead>
+      <%= render 'shared/table/wrapper' do %>
+        <%= render 'shared/table/head',
+          columns: [
+            t('customers.fields.name'),
+            t('customers.fields.phone_number'),
+            t('customers.fields.whatsapp_number'),
+            t('customers.fields.email'),
+            t('common.created_at'),
+            t('common.updated_at'),
+          ]
+        %>
         <tbody>
-          <% @customers.each do |customer| %>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-              <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                <%= customer.name %>
-              </th>
-              <td class="px-6 py-4"><%= customer.phone_number %></td>
-              <td class="px-6 py-4"><%= customer.whatsapp %></td>
-              <td class="px-6 py-4"><%= customer.email %></td>
-              <td class="px-6 py-4"><%= customer.created_at.strftime('%d/%m/%Y %H:%M') %></td>
-              <td class="px-6 py-4"><%= customer.updated_at.strftime('%d/%m/%Y %H:%M') %></td>
-              <td class="px-6 py-4">
+          <% @customers.each do |customer, index| %>
+            <%= render 'shared/table/row' do %>
+              <%= render 'shared/table/cell', bold: true, value: customer.name %>
+              <%= render 'shared/table/cell', value: customer.phone_number %>
+              <%= render 'shared/table/cell', value: customer.whatsapp %>
+              <%= render 'shared/table/cell', value: customer.email %>
+              <%= render 'shared/table/cell', value: customer.created_at.strftime('%d/%m/%Y %H:%M') %>
+              <%= render 'shared/table/cell', value: customer.updated_at.strftime('%d/%m/%Y %H:%M') %>
+              <%= render 'shared/table/cell', html: true do %>
                 <div class='flex justify-end gap-4'>
                   <a id="edit-<%= customer.id %>" href=<%= "/customers/#{customer.id}" %>>
                     <button title="<%= t('common.edit') %>" type="button">
-                    <span class="material-symbols-outlined">edit</span>
-                  </button>
-                </a>
-                <%= button_to customer, method: :delete, id: "delete-#{customer.id}", title: t('common.delete') do %>
-                  <%= content_tag :span, "delete", class: "material-symbols-outlined text-red-500" %>
-                <% end %>
-              </div>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
-  <%= will_paginate @customers, total_entries: @customers_number, class: 'flex dark:text-white justify-center gap-3' %>
-</div>
+                      <span class="material-symbols-outlined">edit</span>
+                    </button>
+                  </a>
+                  <%= button_to customer, method: :delete, id: "delete-#{customer.id}", title: t('common.delete') do %>
+                    <%= content_tag :span, "delete", class: "material-symbols-outlined text-red-500" %>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tbody>
+      <% end %>
+    <% end %>
+    <%= render 'shared/table/paginate', items: @customers, total_entries: @customers_number %>
+  </div>
 <% end %>

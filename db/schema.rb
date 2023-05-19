@@ -43,8 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_513_230_409) do
   create_table 'dressmakers', force: :cascade do |t|
     t.string 'name', null: false
     t.integer 'max_service_quantity', null: false
-    t.datetime 'start_working_date', null: false
-    t.datetime 'end_working_date'
+    t.date 'start_working_date', null: false
+    t.date 'end_working_date'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end

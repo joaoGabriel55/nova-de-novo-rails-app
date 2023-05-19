@@ -10,6 +10,14 @@ RSpec.describe Dressmaker, type: :model do
     it { is_expected.to validate_presence_of(:max_service_quantity) }
     it { is_expected.to validate_presence_of(:start_working_date) }
 
+    context 'when max_service_quantity is zero' do
+      it 'is invalid dressmaker' do
+        dressmaker.max_service_quantity = 0
+
+        expect(dressmaker).not_to be_valid
+      end
+    end
+
     context 'end_working_date is present' do
       it 'is valid after start_working_date' do
         dressmaker.end_working_date = Date.today + 1.day
