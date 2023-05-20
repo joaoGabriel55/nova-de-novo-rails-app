@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Dressmakers::ListDressmakers, type: :service do
   subject(:list_dressmakers) { described_class.new(activated: activated_dressmakers) }
+  let(:dressmakers_not_deleted) { Dressmaker.where(deleted_at: nil) }
 
   describe '#call' do
     context 'when has activated dressmakers' do
@@ -11,6 +12,7 @@ RSpec.describe Dressmakers::ListDressmakers, type: :service do
         FactoryBot.create(:dressmaker, name: 'Zuzu')
         FactoryBot.create(:dressmaker, name: 'Leon')
         FactoryBot.create(:dressmaker, name: 'Lucy', end_working_date: Time.zone.today)
+        FactoryBot.create(:dressmaker, name: 'Sam', deleted_at: Time.zone.today)
       end
       let(:activated_dressmakers) { true }
 
@@ -18,7 +20,7 @@ RSpec.describe Dressmakers::ListDressmakers, type: :service do
         result = list_dressmakers.call
 
         expect(result[:count]).to eq(2)
-        expect(result[:dressmakers]).to eq(Dressmaker.activated.order(created_at: :desc))
+        expect(result[:dressmakers]).to eq(dressmakers_not_deleted.activated.order(created_at: :desc))
       end
     end
 
@@ -45,7 +47,7 @@ RSpec.describe Dressmakers::ListDressmakers, type: :service do
         result = list_dressmakers.call
 
         expect(result[:count]).to eq(1)
-        expect(result[:dressmakers]).to eq(Dressmaker.fired.order(created_at: :desc))
+        expect(result[:dressmakers]).to eq(dressmakers_not_deleted.fired.order(created_at: :desc))
       end
     end
 

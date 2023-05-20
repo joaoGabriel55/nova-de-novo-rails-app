@@ -18,12 +18,16 @@ module Dressmakers
 
     attr_reader :dressmakers
 
+    def dressmakers_not_deleted
+      Dressmaker.where(deleted_at: nil).order(created_at: :desc)
+    end
+
     def dressmakers_active
-      @dressmakers ||= Dressmaker.activated.order(created_at: :desc)
+      @dressmakers ||= dressmakers_not_deleted.activated
     end
 
     def dressmakers_fired
-      @dressmakers ||= Dressmaker.fired.order(created_at: :desc)
+      @dressmakers ||= dressmakers_not_deleted.fired
     end
   end
 end

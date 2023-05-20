@@ -7,6 +7,7 @@ class CreateDressmakers < ActiveRecord::Migration[7.0]
       t.integer :max_service_quantity, null: false
       t.date :start_working_date, null: false
       t.date :end_working_date
+      t.datetime :deleted_at
 
       t.timestamps
     end
