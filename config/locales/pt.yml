@@ -116,3 +116,9 @@ pt:
               greater_than: "deve ser maior que zero"
             end_working_date:
               greater_than: "anterior ou igual à data de contratação"
+        service_order:
+          attributes:
+            entry_date:
+              less_than_or_equal_to: "deve ser anterior ou igual à data de entrega"
+            delivery_date:
+              greater_than_or_equal_to: "deve ser depois ou igual à data de entrada"

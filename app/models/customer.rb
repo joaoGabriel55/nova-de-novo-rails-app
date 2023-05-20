@@ -8,6 +8,8 @@ class Customer < ApplicationRecord
   validates :address, presence: true, associated: true
 
   has_one :address, dependent: :destroy
+  has_many :service_orders
+
   accepts_nested_attributes_for :address
 
   scope :activated, -> { where(deleted_at: nil) }

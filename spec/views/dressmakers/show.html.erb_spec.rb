@@ -14,10 +14,10 @@ end
 
 RSpec.feature 'dressmakers/show.html.erb', type: :feature do
   let!(:created_dressmaker) do
-    FactoryBot.create(:dressmaker, name: 'John Doe')
+    FactoryBot.create(:dressmaker, name: 'John Doe', start_working_date: Time.zone.today)
   end
 
-  let(:end_working_date) { "20/06/#{Date.today.year + 1}" }
+  let(:end_working_date) { "20/06/#{Time.zone.today.year + 1}" }
 
   it 'editing a dressmaker' do
     visit "/dressmakers/#{created_dressmaker.id}"
@@ -31,7 +31,7 @@ RSpec.feature 'dressmakers/show.html.erb', type: :feature do
   end
 
   context 'when the dressmaker end working date is before start working date' do
-    let(:end_working_date) { "20/06/#{Date.today.year - 1}" }
+    let(:end_working_date) { "20/06/#{Time.zone.today.year - 1}" }
 
     it 'shows error message' do
       visit "/dressmakers/#{created_dressmaker.id}"

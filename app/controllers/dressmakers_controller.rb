@@ -26,6 +26,8 @@ class DressmakersController < ApplicationController
   end
 
   def update
+    # debugger
+
     Dressmakers::UpdateDressmaker.new(dressmaker: @dressmaker, attributes: dressmaker_params).call
 
     flash[:notice] = I18n.t('dressmakers.success_update')
