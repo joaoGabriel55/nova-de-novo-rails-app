@@ -32,7 +32,7 @@ RSpec.feature 'customers/new.html.erb', type: :feature do
       click_button I18n.t('common.submit')
     end
 
-    expect(page).to have_content(I18n.t('customers.success_create'))
+    expect(page).to have_content(I18n.t('customers.success.create'))
     expect(Customer.last.name).to eq('John Doe')
   end
 end

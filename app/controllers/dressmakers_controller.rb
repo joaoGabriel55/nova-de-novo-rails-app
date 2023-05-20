@@ -18,7 +18,7 @@ class DressmakersController < ApplicationController
 
     Dressmakers::CreateDressmaker.new(dressmaker: @dressmaker).call
 
-    flash[:notice] = I18n.t('dressmakers.success_create')
+    flash[:notice] = I18n.t('dressmakers.success.create')
     redirect_to dressmakers_path
   rescue Dressmakers::CreateDressmakerError => e
     flash[:error] = e.message
@@ -30,7 +30,7 @@ class DressmakersController < ApplicationController
 
     Dressmakers::UpdateDressmaker.new(dressmaker: @dressmaker, attributes: dressmaker_params).call
 
-    flash[:notice] = I18n.t('dressmakers.success_update')
+    flash[:notice] = I18n.t('dressmakers.success.update')
     redirect_to dressmaker_path(@dressmaker)
   rescue Dressmakers::UpdateDressmakerError => e
     flash[:error] = e.message
@@ -40,7 +40,7 @@ class DressmakersController < ApplicationController
   def destroy
     Dressmakers::DeleteDressmaker.new(id: params[:id]).call
 
-    flash[:notice] = I18n.t('dressmakers.success_destroy')
+    flash[:notice] = I18n.t('dressmakers.success.destroy')
 
     redirect_to dressmakers_path
   rescue Dressmakers::DeleteDressmakerError => e

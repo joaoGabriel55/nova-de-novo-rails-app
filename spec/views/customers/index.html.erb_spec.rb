@@ -100,7 +100,7 @@ RSpec.describe 'customers/index.html.erb', type: :feature do
 
       click_on "delete-#{customer.id}"
 
-      expect(page).to have_selector('div', text: I18n.t('customers.success_destroy'))
+      expect(page).to have_selector('div', text: I18n.t('customers.success.destroy'))
       expect(page).to_not have_selector('th', text: 'John Doe')
     end
   end

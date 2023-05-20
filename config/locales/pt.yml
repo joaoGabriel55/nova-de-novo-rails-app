@@ -35,9 +35,6 @@ pt:
     new_customer: "Cadastrar cliente"
     customers_number: "Número total de clientes"
     search_customers_number: "Número total de clientes buscados"
-    success_create: "Cliente cadastrado com sucesso"
-    success_update: "Cliente atualizado com sucesso"
-    success_destroy: "Cliente excluído com sucesso"
     fields:
       name: "Nome completo"
       phone_number: "Número de telefone"
@@ -52,6 +49,10 @@ pt:
         neighborhood: "Bairro"
         number: "Número"
         complement: "Complemento"
+    success:
+      create: "Cliente cadastrado com sucesso"
+      update: "Cliente atualizado com sucesso"
+      destroy: "Cliente excluído com sucesso"
     errors:
       update: "Erro ao atualizar cliente"
       create: "Erro ao cadastrar cliente"
@@ -61,6 +62,12 @@ pt:
   service_orders:
     new: "Nova Ordem de Serviço"
     index: "Ordens de Serviços"
+    errors:
+      update: "Erro ao atualizar Ordem de Serviço"
+      create: "Erro ao cadastrar Ordem de Serviço"
+      not_found: "Ordem de Serviço não encontrada"
+      delete: "Erro ao excluir Ordem de Serviço"
+
   dressmakers:
     new: "Registrar nova Costureira"
     edit: "Editar Costureira"
@@ -70,14 +77,15 @@ pt:
     empty: "Não há Costureiras cadastradas"
     empty_fired: "Nenhuma Costureira inativa"
     dressmakers_number: "Número total de Costureiras"
-    success_create: "Costureira cadastrada com sucesso"
-    success_update: "Costureira atualizada com sucesso"
-    success_destroy: "Costureira excluída com sucesso"
     fields:
       name: "Nome"
       max_service_quantity: "Qtd. máxima de serviços"
       start_working_date: "Data de contratação"
       end_working_date: "Data de demissão"
+    success:
+      create: "Costureira cadastrada com sucesso"
+      update: "Costureira atualizada com sucesso"
+      destroy: "Costureira excluída com sucesso"
     errors:
       update: "Erro ao atualizar Costureira"
       create: "Erro ao cadastrar Costureira"

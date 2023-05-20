@@ -24,7 +24,7 @@ RSpec.feature 'dressmakers/show.html.erb', type: :feature do
 
     fill_form(end_working_date)
 
-    expect(page).to have_content(I18n.t('dressmakers.success_update'))
+    expect(page).to have_content(I18n.t('dressmakers.success.update'))
     expect(Dressmaker.last.name).to eq('Zuzu Updated')
     expect(Dressmaker.last.max_service_quantity).to eq(12)
     expect(Dressmaker.last.end_working_date.strftime('%d/%m/%Y')).to eq(end_working_date)

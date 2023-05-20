@@ -24,7 +24,7 @@ RSpec.feature 'customers/show.html.erb', type: :feature do
       click_button I18n.t('common.submit')
     end
 
-    expect(page).to have_content(I18n.t('customers.success_update'))
+    expect(page).to have_content(I18n.t('customers.success.update'))
     expect(Customer.last.name).to eq('John Doe Updated')
     expect(Customer.last.address.street).to eq('Main Street Updated')
   end

@@ -14,7 +14,7 @@ RSpec.feature 'dressmakers/new.html.erb', type: :feature do
       click_button I18n.t('common.submit')
     end
 
-    expect(page).to have_content(I18n.t('dressmakers.success_create'))
+    expect(page).to have_content(I18n.t('dressmakers.success.create'))
     expect(Dressmaker.last.name).to eq('Zuzu')
   end
 
