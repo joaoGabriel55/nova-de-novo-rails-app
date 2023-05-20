@@ -17,6 +17,8 @@ FactoryBot.define do
         FactoryBot.build(:task, name: 'Task3', service_order:)
       ]
 
+      service_order.dressmaker.save!
+      service_order.customer.save!
       service_order.tasks = tasks
     end
   end

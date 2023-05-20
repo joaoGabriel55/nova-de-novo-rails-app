@@ -67,6 +67,8 @@ pt:
       create: "Erro ao cadastrar Ordem de Serviço"
       not_found: "Ordem de Serviço não encontrada"
       delete: "Erro ao excluir Ordem de Serviço"
+      exceeded_max_number_of_dressmaker_order_services: "Ultrapassada a quantidade máxima de serviços por costureira"
+      empty_service_order_tasks: "Uma ordem de serviço deve ter pelo menos um serviço"
 
   dressmakers:
     new: "Registrar nova Costureira"
