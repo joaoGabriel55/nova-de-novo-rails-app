@@ -32,8 +32,9 @@ class CustomersController < ApplicationController
     Customers::UpdateCustomer.new(customer: @customer, attributes: customer_params).call
 
     flash[:notice] = I18n.t('customers.success_update')
-    render :show
-  rescue Customers::UpdateCustomerError
+    redirect_to customer_path(@customer)
+  rescue Customers::UpdateCustomerError => e
+    flash[:error] = e.message
     render :show
   end
 
