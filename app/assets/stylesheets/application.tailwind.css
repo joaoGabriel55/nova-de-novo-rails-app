@@ -24,3 +24,11 @@
 .navbar-link--active {
   @apply block py-2 pl-3 pr-4 text-white bg-primary-600 rounded md:bg-transparent md:text-primary-600 md:p-0 dark:text-white md:dark:text-primary-500;
 }
+
+.tab-item {
+  @apply inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 dark:hover:text-gray-300;
+}
+
+.tab-item--active {
+  @apply inline-block p-4 text-primary-600 bg-gray-100 rounded-t-lg dark:bg-gray-800 dark:text-primary-500;
+}

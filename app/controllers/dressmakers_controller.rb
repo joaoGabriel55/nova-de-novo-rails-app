@@ -40,7 +40,9 @@ class DressmakersController < ApplicationController
   end
 
   def set_dressmakers
-    result = Dressmakers::ListDressmakers.new.call
+    @activated = params[:activated].nil? ? true : params[:activated] == 'true'
+
+    result = Dressmakers::ListDressmakers.new(activated: @activated).call
 
     @dressmakers = result[:dressmakers]
     @dressmakers_count = result[:count]
