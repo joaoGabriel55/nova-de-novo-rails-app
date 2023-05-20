@@ -1,6 +1,9 @@
 <% if flash[:notice] %>
   <%= render 'shared/toast', message: flash[:notice] %>
 <% end %>
+<% if flash[:error] %>
+  <%= render 'shared/toast', message: flash[:error], error: true %>
+<% end %>
 <%= form_with(model: @customer) do |form| %>
   <div class="mb-6">
     <%= form.label :name, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>

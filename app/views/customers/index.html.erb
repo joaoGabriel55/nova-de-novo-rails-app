@@ -2,6 +2,9 @@
   <% if flash[:notice] %>
     <%= render 'shared/toast', message: flash[:notice] %>
   <% end %>
+  <% if flash[:error] %>
+    <%= render 'shared/toast', message: flash[:error], error: true %>
+  <% end %>
   <div class="relative overflow-x-auto p-2 flex flex-col gap-2">
     <div class='flex justify-between items-center'>
       <% if @customers.present? %>
