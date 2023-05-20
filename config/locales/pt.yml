@@ -65,7 +65,10 @@ pt:
     new: "Registrar nova Costureira"
     edit: "Editar Costureira"
     index: "Costureiras"
+    activated: "Costureiras ativas"
+    fired: "Costureiras inativas"
     empty: "Não há Costureiras cadastradas"
+    empty_fired: "Nenhuma Costureira inativa"
     dressmakers_number: "Número total de Costureiras"
     success_create: "Costureira cadastrada com sucesso"
     success_update: "Costureira atualizada com sucesso"
@@ -112,4 +115,4 @@ pt:
             max_service_quantity:
               greater_than: "deve ser maior que zero"
             end_working_date:
-              greater_than: "anterior à data de contratação"
+              greater_than: "anterior ou igual à data de contratação"

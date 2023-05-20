@@ -45,6 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 20_230_513_230_409) do
     t.integer 'max_service_quantity', null: false
     t.date 'start_working_date', null: false
     t.date 'end_working_date'
+    t.datetime 'deleted_at'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
   end

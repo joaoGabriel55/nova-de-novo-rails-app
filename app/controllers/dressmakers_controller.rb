@@ -28,9 +28,20 @@ class DressmakersController < ApplicationController
     Dressmakers::UpdateDressmaker.new(dressmaker: @dressmaker, attributes: dressmaker_params).call
 
     flash[:notice] = I18n.t('dressmakers.success_update')
-    redirect_to dressmakers_path
+    render :show
   rescue Dressmakers::UpdateDressmakerError
     render :show
+  end
+
+  def destroy
+    Dressmakers::DeleteDressmaker.new(id: params[:id]).call
+
+    flash[:notice] = I18n.t('dressmakers.success_destroy')
+
+    redirect_to dressmakers_path
+  rescue Customers::DeleteCustomerError => e
+    flash[:error] = e.message
+    redirect_to dressmakers_path
   end
 
   private
@@ -40,7 +51,9 @@ class DressmakersController < ApplicationController
   end
 
   def set_dressmakers
-    result = Dressmakers::ListDressmakers.new.call
+    @activated = params[:activated].nil? ? true : params[:activated] == 'true'
+
+    result = Dressmakers::ListDressmakers.new(activated: @activated).call
 
     @dressmakers = result[:dressmakers]
     @dressmakers_count = result[:count]
