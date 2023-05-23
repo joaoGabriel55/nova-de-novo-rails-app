@@ -7,7 +7,9 @@ module ServiceOrders
     end
 
     def call
-      service_order.save! unless validate_service_order!
+      validate_service_order!
+
+      service_order.save!
     rescue ActiveRecord::RecordInvalid
       raise ServiceOrders::CreateServiceOrderError
     end
@@ -23,7 +25,7 @@ module ServiceOrders
     end
 
     def dressmaker
-      @dressmaker ||= Dressmakers::FindDressmaker.new(id: service_order.dressmaker.id).call
+      @dressmaker ||= service_order.dressmaker
     end
 
     attr_accessor :service_order

@@ -33,9 +33,7 @@ RSpec.describe ServiceOrders::CreateServiceOrder, type: :service do
 
     context 'when the service order dressmaker exceeds the max service quantity' do
       let!(:service_orders_created) do
-        FactoryBot.create(:service_order, dressmaker:)
-        FactoryBot.create(:service_order, dressmaker:)
-        FactoryBot.create(:service_order, dressmaker:)
+        FactoryBot.create_list(:service_order, 3, dressmaker:)
       end
       let(:service_order) { FactoryBot.build(:service_order, dressmaker:) }
 
