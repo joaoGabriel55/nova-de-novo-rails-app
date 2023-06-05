@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.feature 'customers/new.html.erb', type: :feature do
   it 'creating a new customer' do
-    VCR.use_cassette('customers/new') do
+    VCR.use_cassette('states_and_city_api_response') do
       visit '/customers/new'
 
       within 'form' do
