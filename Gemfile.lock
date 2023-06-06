@@ -90,6 +90,7 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     crass (1.0.6)
     database_cleaner (2.0.2)
       database_cleaner-active_record (>= 2, < 3)
@@ -198,6 +199,10 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    redis (5.0.6)
+      redis-client (>= 0.9.0)
+    redis-client (0.14.1)
+      connection_pool
     regexp_parser (2.8.0)
     reline (0.3.3)
       io-console (~> 0.5)
@@ -239,6 +244,11 @@ GEM
     ruby2_keywords (0.0.5)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
+    sidekiq (7.1.1)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.14.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -295,10 +305,12 @@ DEPENDENCIES
   pg_search
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
+  redis
   rspec-rails (~> 6.0.0)
   rubocop
   rubocop-rails
   shoulda-matchers (~> 5.0)
+  sidekiq
   sprockets-rails
   stimulus-rails
   tailwindcss-rails (~> 2.0)

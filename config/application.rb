@@ -38,6 +38,7 @@ module NovaDeNovo
 
     config.i18n.available_locales = %i[pt en]
     config.i18n.default_locale = :pt
+    config.active_job.queue_adapter = :sidekiq
 
     config.time_zone = 'Brasilia'
 

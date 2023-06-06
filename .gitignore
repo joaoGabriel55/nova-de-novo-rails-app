@@ -38,3 +38,5 @@
 /node_modules/
 
 /db/dump.json
+
+dump.rdb
