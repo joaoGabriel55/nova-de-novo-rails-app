@@ -1,0 +1,6 @@
+<h1 class='text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>Export DB Job</h1>
+<%= form_with url: export_db_job_trigger_job_path do |f| %>
+  <button class='text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+    <%= f.submit 'Launch job' %>
+  </button>
+<% end %>

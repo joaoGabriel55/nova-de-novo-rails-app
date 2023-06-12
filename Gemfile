@@ -51,6 +51,8 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 gem 'faraday'
 gem 'pg_search'
+gem 'redis'
+gem 'sidekiq'
 gem 'tailwindcss-rails', '~> 2.0'
 gem 'will_paginate'
 
