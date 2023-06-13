@@ -42,6 +42,6 @@ module NovaDeNovo
 
     config.time_zone = 'Brasilia'
 
-    config.autoload_paths += %W[#{config.root}/app]
+    config.autoload_paths += %W[#{config.root}/app, #{config.root}/lib]
   end
 end
