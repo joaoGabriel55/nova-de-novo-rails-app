@@ -6,7 +6,7 @@
 ## TODO
 - CRUD Service Order
 - Print Service Order (as PDF)
-- Cron job with Sidekiq to save DB data on GDrive
+- Cron job with Sidekiq to save DB data on GDrive (https://github.com/gimite/google-drive-ruby)
 
 ## Setup
 
