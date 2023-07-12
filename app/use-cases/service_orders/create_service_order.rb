@@ -7,27 +7,17 @@ module ServiceOrders
     end
 
     def call
-      validate_service_order!
+      ServiceOrderValidation.validate_service_order!(service_order.tasks, dressmaker)
 
       service_order.save!
     rescue ActiveRecord::RecordInvalid
-      raise ServiceOrders::CreateServiceOrderError
+      raise ServiceOrderErrors::CreateError
     end
 
-    private
-
-    def validate_service_order!
-      if service_order.tasks.empty?
-        raise ServiceOrders::EmptyServiceOrderTasksError
-      elsif dressmaker.service_orders.length + 1 > dressmaker.max_service_quantity
-        raise ServiceOrders::ExceededMaxNumberOfDressmakerOrderServicesError
-      end
-    end
+    attr_accessor :service_order
 
     def dressmaker
       @dressmaker ||= service_order.dressmaker
     end
-
-    attr_accessor :service_order
   end
 end

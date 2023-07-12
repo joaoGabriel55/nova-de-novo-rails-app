@@ -23,10 +23,10 @@ RSpec.describe ServiceOrders::CreateServiceOrder, type: :service do
         result
       end
 
-      it 'raises ServiceOrders::EmptyServiceOrderTasksError' do
+      it 'raises ServiceOrderErrors::EmptyTasksError' do
         expect do
           create_service_order.call
-        end.to raise_error(ServiceOrders::EmptyServiceOrderTasksError,
+        end.to raise_error(ServiceOrderErrors::EmptyTasksError,
                            /#{I18n.t('service_orders.errors.empty_service_order_tasks')}/)
       end
     end
@@ -37,10 +37,10 @@ RSpec.describe ServiceOrders::CreateServiceOrder, type: :service do
       end
       let(:service_order) { FactoryBot.build(:service_order, dressmaker:) }
 
-      it 'raises ServiceOrders::ExceededMaxNumberOfDressmakerOrderServicesError' do
+      it 'raises ServiceOrderErrors::ExceededMaxNumberOfDressmakerError' do
         expect do
           create_service_order.call
-        end.to raise_error(ServiceOrders::ExceededMaxNumberOfDressmakerOrderServicesError,
+        end.to raise_error(ServiceOrderErrors::ExceededMaxNumberOfDressmakerError,
                            /#{I18n.t('service_orders.errors.exceeded_max_number_of_dressmaker_order_services')}/)
       end
     end
@@ -48,10 +48,10 @@ RSpec.describe ServiceOrders::CreateServiceOrder, type: :service do
     context 'when the service order is invalid' do
       let(:service_order) { FactoryBot.build(:service_order, entry_date: nil) }
 
-      it 'raises ServiceOrders::CreateServiceOrderError' do
+      it 'raises ServiceOrderErrors::CreateError' do
         expect do
           create_service_order.call
-        end.to raise_error(ServiceOrders::CreateServiceOrderError, /#{I18n.t('service_orders.errors.create')}/)
+        end.to raise_error(ServiceOrderErrors::CreateError, /#{I18n.t('service_orders.errors.create')}/)
       end
     end
   end

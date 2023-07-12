@@ -14,10 +14,14 @@ Up docker containers
 ```sh
 docker compose up -d
 ```
-
 Install gems
 ```sh
 bundle install
+```
+Setup database
+```sh
+rails db:create # Only create databases (dev and test)
+rails db:setup  # Create databases (dev and test), run migrations and run seed
 ```
 
 Deploy app locally
