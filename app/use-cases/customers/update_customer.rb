@@ -10,7 +10,7 @@ module Customers
     def call
       customer.update!(attributes)
     rescue ActiveRecord::RecordInvalid
-      raise Customers::UpdateCustomerError
+      raise CustomerErrors::UpdateError
     end
 
     private

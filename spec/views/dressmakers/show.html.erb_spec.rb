@@ -46,7 +46,7 @@ RSpec.feature 'dressmakers/show.html.erb', type: :feature do
 
   context 'when the dressmaker update fails' do
     it 'shows error message' do
-      allow(Dressmakers::UpdateDressmaker).to receive(:new).and_raise(Dressmakers::UpdateDressmakerError)
+      allow(Dressmakers::UpdateDressmaker).to receive(:new).and_raise(DressmakerErrors::UpdateError)
 
       visit "/dressmakers/#{created_dressmaker.id}"
 

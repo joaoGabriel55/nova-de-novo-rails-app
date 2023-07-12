@@ -31,7 +31,7 @@ RSpec.feature 'customers/show.html.erb', type: :feature do
 
   context 'when the customer update fails' do
     it 'shows error message' do
-      allow(Customers::UpdateCustomer).to receive(:new).and_raise(Customers::UpdateCustomerError)
+      allow(Customers::UpdateCustomer).to receive(:new).and_raise(CustomerErrors::UpdateError)
 
       visit "/customers/#{created_customer.id}"
 

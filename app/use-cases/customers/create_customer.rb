@@ -9,7 +9,7 @@ module Customers
     def call
       customer.save!
     rescue ActiveRecord::RecordInvalid
-      raise Customers::CreateCustomerError
+      raise CustomerErrors::CreateError
     end
 
     private

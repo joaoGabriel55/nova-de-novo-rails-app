@@ -20,7 +20,7 @@ RSpec.describe Dressmakers::CreateDressmaker, type: :service do
       it 'raises a CreateDressmakerError' do
         expect do
           create_dressmaker.call
-        end.to raise_error(Dressmakers::CreateDressmakerError, /#{I18n.t('dressmakers.errors.create')}/)
+        end.to raise_error(DressmakerErrors::CreateError, /#{I18n.t('dressmakers.errors.create')}/)
       end
 
       it 'does not create a new dressmaker' do

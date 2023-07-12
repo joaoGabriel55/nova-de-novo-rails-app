@@ -10,7 +10,7 @@ module Dressmakers
     def call
       dressmaker.update!(attributes)
     rescue ActiveRecord::RecordInvalid
-      raise Dressmakers::UpdateDressmakerError
+      raise DressmakerErrors::UpdateError
     end
 
     private

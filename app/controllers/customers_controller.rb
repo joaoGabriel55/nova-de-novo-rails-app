@@ -24,7 +24,7 @@ class CustomersController < ApplicationController
 
     flash[:notice] = I18n.t('customers.success.create')
     redirect_to customers_path
-  rescue Customers::CreateCustomerError
+  rescue CustomerErrors::CreateError
     render :new
   end
 
@@ -33,7 +33,7 @@ class CustomersController < ApplicationController
 
     flash[:notice] = I18n.t('customers.success.update')
     redirect_to customer_path(@customer)
-  rescue Customers::UpdateCustomerError => e
+  rescue CustomerErrors::UpdateError => e
     flash[:error] = e.message
     render :show
   end
@@ -44,7 +44,7 @@ class CustomersController < ApplicationController
     flash[:notice] = I18n.t('customers.success.destroy')
 
     redirect_to customers_path
-  rescue Customers::DeleteCustomerError => e
+  rescue CustomerErrors::DeleteError => e
     flash[:error] = e.message
     redirect_to customers_path
   end

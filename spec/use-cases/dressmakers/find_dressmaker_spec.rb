@@ -22,7 +22,7 @@ RSpec.describe Dressmakers::FindDressmaker, type: :service do
       it 'raises a DressmakerNotFoundError' do
         expect do
           find_customer.call
-        end.to raise_error(Dressmakers::DressmakerNotFoundError, /#{I18n.t('dressmakers.errors.not_found')}/)
+        end.to raise_error(DressmakerErrors::NotFoundError, /#{I18n.t('dressmakers.errors.not_found')}/)
       end
     end
   end

@@ -22,7 +22,7 @@ RSpec.describe Customers::UpdateCustomer, type: :service do
       it 'raises a UpdateCustomerError' do
         expect do
           update_customer.call
-        end.to raise_error(Customers::UpdateCustomerError, /#{I18n.t('customers.errors.update')}/)
+        end.to raise_error(CustomerErrors::UpdateError, /#{I18n.t('customers.errors.update')}/)
         expect(Customer.count).to be(1)
       end
     end

@@ -20,7 +20,7 @@ class DressmakersController < ApplicationController
 
     flash[:notice] = I18n.t('dressmakers.success.create')
     redirect_to dressmakers_path
-  rescue Dressmakers::CreateDressmakerError => e
+  rescue DressmakerErrors::CreateError => e
     flash[:error] = e.message
     render :new
   end
@@ -32,7 +32,7 @@ class DressmakersController < ApplicationController
 
     flash[:notice] = I18n.t('dressmakers.success.update')
     redirect_to dressmaker_path(@dressmaker)
-  rescue Dressmakers::UpdateDressmakerError => e
+  rescue DressmakerErrors::UpdateError => e
     flash[:error] = e.message
     render :show
   end
@@ -43,7 +43,7 @@ class DressmakersController < ApplicationController
     flash[:notice] = I18n.t('dressmakers.success.destroy')
 
     redirect_to dressmakers_path
-  rescue Dressmakers::DeleteDressmakerError => e
+  rescue DressmakerErrors::DeleteError => e
     flash[:error] = e.message
     redirect_to dressmakers_path
   end

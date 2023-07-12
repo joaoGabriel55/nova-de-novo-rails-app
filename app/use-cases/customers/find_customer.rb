@@ -9,7 +9,7 @@ module Customers
     def call
       Customer.find(customer_id)
     rescue ActiveRecord::RecordNotFound
-      raise Customers::CustomerNotFoundError
+      raise CustomerErrors::NotFoundError
     end
 
     private
