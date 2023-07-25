@@ -13,4 +13,6 @@ class ServiceOrder < ApplicationRecord
   belongs_to :customer
   belongs_to :dressmaker
   has_many :tasks
+
+  scope :activated, -> { where(deleted_at: nil) }
 end
