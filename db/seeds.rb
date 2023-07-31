@@ -67,3 +67,35 @@ puts "#{Customer.count} Customer are seeded"
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+dressmaker = Dressmaker.create(
+  name: 'Zuzu',
+  max_service_quantity: 4,
+  start_working_date: '21/02/2022',
+  end_working_date: nil
+)
+
+t1 = Task.create(name: 'Task 1', description: 'some description', price: 1000)
+t2 = Task.create(name: 'Task 1', description: 'some description', price: 1000)
+
+ServiceOrder.create(
+  entry_date: '21/02/2022',
+  delivery_date: '23/02/2022',
+  delivery_period: 1,
+  status_service: 1,
+  paid: false,
+  tasks: [t1, t2],
+  customer: Customer.first,
+  dressmaker: Dressmaker.first
+)
+
+ServiceOrder.create(
+  entry_date: '21/02/2022',
+  delivery_date: '23/02/2022',
+  delivery_period: 1,
+  status_service: 1,
+  paid: false,
+  tasks: [t1, t2],
+  customer: Customer.second,
+  dressmaker: Dressmaker.first
+)

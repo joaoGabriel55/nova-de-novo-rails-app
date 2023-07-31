@@ -5,10 +5,11 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   mount Sidekiq::Web => '/sidekiq'
 
-  root 'customers#index' # TODO: Add a dashboard
+  root 'service_orders#index' # TODO: Add a dashboard
 
   resources :customers
   resources :dressmakers
+  resources :service_orders
 
   namespace :api do
     namespace :v1 do

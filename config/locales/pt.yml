@@ -24,6 +24,8 @@ pt:
     created_at: "Criado em"
     updated_at: "Atualizado em"
     search: "Buscar"
+    positive: "Sim"
+    negative: "Não"
   customers:
     index: "Clientes"
     search: "Digite aqui para buscar clientes"
@@ -62,6 +64,26 @@ pt:
   service_orders:
     new: "Nova Ordem de Serviço"
     index: "Ordens de Serviços"
+    empty: "Não há Ordens de Serviços cadastradas"
+    empty_search: "Nenhuma Ordem de Serviço encontrada"
+    show_all: "Mostrar todos"
+    edit: "Editar Ordem de Serviço"
+    new_customer: "Cadastrar Ordem de Serviço"
+    service_orders_number: "Número total de Ordens de Serviços"
+    search_service_orders_number: "Número total de Ordens de Serviços buscadas"
+    fields:
+      entry_date: "Data de entrada"
+      delivery_date: "Data de entrega"
+      delivery_period: "Período de entrega"
+      period:
+        morning: "Manhã"
+        afternoon: "Tarde"
+      status_service: "Status"
+      status:
+        pending: "Pendente"
+        finished: "Finalizada"
+        canceled: "Cancelada"
+      paid: "Paga?"
     errors:
       update: "Erro ao atualizar Ordem de Serviço"
       create: "Erro ao cadastrar Ordem de Serviço"
