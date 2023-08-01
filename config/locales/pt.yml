@@ -16,6 +16,7 @@
 
 pt:
   common:
+    info: "Informações"
     edit: "Editar"
     delete: "Excluir"
     back: "Voltar"
@@ -26,6 +27,7 @@ pt:
     search: "Buscar"
     positive: "Sim"
     negative: "Não"
+
   customers:
     index: "Clientes"
     search: "Digite aqui para buscar clientes"
@@ -84,6 +86,7 @@ pt:
         finished: "Finalizada"
         canceled: "Cancelada"
       paid: "Paga?"
+      total: "Total (R$)"
     errors:
       update: "Erro ao atualizar Ordem de Serviço"
       create: "Erro ao cadastrar Ordem de Serviço"
@@ -91,6 +94,16 @@ pt:
       delete: "Erro ao excluir Ordem de Serviço"
       exceeded_max_number_of_dressmaker_order_services: "Ultrapassada a quantidade máxima de serviços por costureira"
       empty_service_order_tasks: "Uma ordem de serviço deve ter pelo menos um serviço"
+
+  tasks:
+    new: "Novo Serviço"
+    index: "Serviços"
+    empty: "Não há Serviços cadastrados"
+    fields:
+      name: "Nome"
+      price: "Preço (R$)"
+      description: "Descrição"
+
 
   dressmakers:
     new: "Registrar nova Costureira"

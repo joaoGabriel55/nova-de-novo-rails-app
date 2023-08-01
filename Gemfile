@@ -55,6 +55,7 @@ gem 'redis'
 gem 'sidekiq'
 gem 'tailwindcss-rails', '~> 2.0'
 gem 'will_paginate'
+gem 'draper', '~> 4.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

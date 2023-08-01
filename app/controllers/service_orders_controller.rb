@@ -15,7 +15,7 @@ class ServiceOrdersController < ApplicationController
   def set_service_orders
     result = ServiceOrders::SearchPaginateServiceOrders.new(search_term:, page: params[:page]).call
 
-    @service_orders ||= result[:data] || []
+    @service_orders ||= ServiceOrdersDecorator.decorate_collection(result[:data]) || []
     @service_orders_count = result[:count]
     # @search_count = result[:search_count]
   end
