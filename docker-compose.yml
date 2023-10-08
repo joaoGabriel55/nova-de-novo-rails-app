@@ -1,8 +1,22 @@
 version: "3"
 
 services:
-  db:
+  app:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bin/dev"
+    volumes:
+      - .:/myapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+      - redis
+    tty: true
+
+  database:
     image: postgres
+    volumes:
+      - ./tmp/database:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
@@ -11,5 +25,7 @@ services:
 
   redis:
     image: redis
+    volumes:
+      - ./tmp/redis:/data
     ports:
       - "6379:6379"

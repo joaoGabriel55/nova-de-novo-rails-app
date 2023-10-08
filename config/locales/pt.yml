@@ -74,6 +74,8 @@ pt:
     service_orders_number: "Número total de Ordens de Serviços"
     search_service_orders_number: "Número total de Ordens de Serviços buscadas"
     fields:
+      customer: "Cliente"
+      dressmaker: "Costureira"
       entry_date: "Data de entrada"
       delivery_date: "Data de entrega"
       delivery_period: "Período de entrega"

@@ -6,6 +6,10 @@ class ServiceOrdersController < ApplicationController
     set_service_orders
   end
 
+  def new
+    @service_order = ServiceOrder.new
+  end
+
   private
 
   def search_term
