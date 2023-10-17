@@ -14,7 +14,7 @@ services:
     tty: true
 
   database:
-    image: postgres
+    image: postgres:15
     volumes:
       - ./tmp/database:/var/lib/postgresql/data
     environment:
