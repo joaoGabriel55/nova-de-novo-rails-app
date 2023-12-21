@@ -2,7 +2,7 @@
 
 module Dressmakers
   class ListDressmakers
-    def initialize(activated:)
+    def initialize(activated: true)
       if activated
         dressmakers_active
       else

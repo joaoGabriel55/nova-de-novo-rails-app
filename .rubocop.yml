@@ -10,5 +10,3 @@ Style/ClassAndModuleChildren:
   Enabled: false
 Metrics/AbcSize:
   Enabled: false
-
-

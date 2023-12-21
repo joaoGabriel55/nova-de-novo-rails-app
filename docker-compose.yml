@@ -16,7 +16,7 @@ services:
   database:
     image: postgres:15
     volumes:
-      - ./tmp/database:/var/lib/postgresql/data
+      - .:/database
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
@@ -26,6 +26,6 @@ services:
   redis:
     image: redis
     volumes:
-      - ./tmp/redis:/data
+      - .:/redis
     ports:
       - "6379:6379"

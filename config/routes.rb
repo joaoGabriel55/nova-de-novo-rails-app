@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       get 'states', to: 'states_and_cities#states'
       get 'states/:state', to: 'states_and_cities#state_cities'
+      get 'customers', to: 'customers#search'
     end
   end
 

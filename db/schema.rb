@@ -51,8 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_712_114_504) do
   end
 
   create_table 'service_orders', force: :cascade do |t|
-    t.date 'delivery_date', null: false
     t.date 'entry_date', null: false
+    t.date 'delivery_date', null: false
     t.integer 'delivery_period', default: 0, null: false
     t.integer 'status_service', default: 0, null: false
     t.boolean 'paid', default: false

@@ -49,13 +49,13 @@ gem 'bootsnap', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+gem 'draper', '~> 4.0'
 gem 'faraday'
 gem 'pg_search'
 gem 'redis'
 gem 'sidekiq'
 gem 'tailwindcss-rails', '~> 2.0'
 gem 'will_paginate'
-gem 'draper', '~> 4.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -93,6 +93,6 @@ group :development do
   gem 'foreman', '~> 0.87.2'
 end
 
-gem "react-rails", "~> 3.1"
+gem 'react-rails', '~> 3.1'
 
-gem "vite_rails", "~> 3.0"
+gem 'vite_rails', '~> 3.0'
