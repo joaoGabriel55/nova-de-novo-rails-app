@@ -43,5 +43,6 @@ module NovaDeNovo
     config.time_zone = 'Brasilia'
 
     config.autoload_paths += %W[#{config.root}/app, #{config.root}/lib]
+    config.assets.js_compressor = uglifier.new(harmony: true)
   end
 end
