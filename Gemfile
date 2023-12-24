@@ -96,5 +96,3 @@ end
 gem 'react-rails', '~> 3.1'
 
 gem 'vite_rails', '~> 3.0'
-
-gem 'uglifier', '~> 4.2'
