@@ -319,8 +319,6 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uglifier (4.2.0)
-      execjs (>= 0.3.0, < 3)
     unicode-display_width (2.5.0)
     vcr (6.2.0)
     vite_rails (3.0.17)
@@ -384,7 +382,6 @@ DEPENDENCIES
   tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
-  uglifier (~> 4.2)
   vcr (~> 6.1)
   vite_rails (~> 3.0)
   web-console
