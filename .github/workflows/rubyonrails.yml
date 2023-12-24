@@ -22,6 +22,7 @@ jobs:
           POSTGRES_DB: nova_de_novo_test
           POSTGRES_USER: admin
           POSTGRES_PASSWORD: admin
+          VITE_RUBY_SKIP_COMPATIBILITY_CHECK: true
     env:
       RAILS_ENV: test
       DATABASE_URL: "postgres://admin:admin@localhost:5432/nova_de_novo_test"
