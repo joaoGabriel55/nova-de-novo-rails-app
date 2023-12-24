@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useCustomersSearch from "./hooks/useCustomersSearch";
 import render from "./react_render";
 
@@ -26,7 +26,7 @@ function CustomersAutocomplete() {
   };
 
   return (
-    <div className="relative w-full">
+    <>
       <input
         name="service_order[customer]"
         value={selectedCustomer?.id}
@@ -51,8 +51,8 @@ function CustomersAutocomplete() {
         />
         {showOptions && (
           <ul
-            className="z-10 absolute py-2 text-sm text-gray-700 dark:text-gray-200 bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700"
             id="cb1-listbox"
+            className="z-10 absolute py-2 text-sm text-gray-700 dark:text-gray-200 bg-white divide-y divide-gray-100 rounded-lg shadow w-full dark:bg-gray-700"
             aria-labelledby="dropdown-button"
             role="listbox"
           >
@@ -69,14 +69,14 @@ function CustomersAutocomplete() {
               </li>
             ))}
             {customers.length === 0 && (
-              <li className="absolute bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 inline-flex w-full px-4 py-2 text-white hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+              <li className="inline-flex w-full px-4 py-2 text-white hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer">
                 Cliente não encontrado
               </li>
             )}
           </ul>
         )}
       </div>
-    </div>
+    </>
   );
 }
 
