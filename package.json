@@ -6,7 +6,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "vite": "^4.4.11",
-    "vite-plugin-ruby": "^3.2.2"
+    "vite": "^5.0.10",
+    "vite-plugin-ruby": "^5.0.0"
   }
 }

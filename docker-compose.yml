@@ -8,6 +8,8 @@ services:
       - .:/myapp
     ports:
       - "3000:3000"
+    environment:
+      VITE_RUBY_SKIP_COMPATIBILITY_CHECK: true
     depends_on:
       - database
       - redis
