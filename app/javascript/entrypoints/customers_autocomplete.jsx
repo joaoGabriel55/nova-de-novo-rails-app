@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import useCustomersSearch from "./hooks/useCustomersSearch";
 import render from "./react_render";
 
-function CustomersAutocomplete() {
+export const CustomersAutocomplete = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [selectedCustomerId, setSelectedCustomerId] = useState(null);
   const [showOptions, setShowOptions] = useState(false);
 
   const { customers } = useCustomersSearch(searchTerm);
@@ -14,7 +14,7 @@ function CustomersAutocomplete() {
   };
 
   const handleSelectedCustomer = (customer) => {
-    setSelectedCustomer(customer);
+    setSelectedCustomerId(customer.id);
     setSearchTerm(customer.name);
     setShowOptions(false);
   };
@@ -22,14 +22,14 @@ function CustomersAutocomplete() {
   const handleChangeSearchTerm = (value) => {
     setSearchTerm(value);
     setShowOptions(true);
-    setSelectedCustomer(null);
+    setSelectedCustomerId(null);
   };
 
   return (
-    <>
+    <Fragment>
       <input
         name="service_order[customer]"
-        value={selectedCustomer?.id}
+        value={selectedCustomerId}
         required
         hidden
         readOnly
@@ -76,8 +76,8 @@ function CustomersAutocomplete() {
           </ul>
         )}
       </div>
-    </>
+    </Fragment>
   );
-}
+};
 
-render("autocomplete", <CustomersAutocomplete />);
+// render("autocomplete", <CustomersAutocomplete />);
