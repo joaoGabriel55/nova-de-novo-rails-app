@@ -93,6 +93,6 @@ group :development do
   gem 'foreman', '~> 0.87.2'
 end
 
-gem 'react-rails', '~> 3.1'
-
 gem 'vite_rails', '~> 3.0'
+
+gem "react_on_rails", "~> 13.4"
