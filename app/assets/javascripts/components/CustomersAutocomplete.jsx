@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from "react";
-import useCustomersSearch from "./hooks/useCustomersSearch";
-import render from "./react_render";
+import useCustomersSearch from "../hooks/useCustomersSearch";
 
 export const CustomersAutocomplete = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -79,5 +78,3 @@ export const CustomersAutocomplete = () => {
     </Fragment>
   );
 };
-
-// render("autocomplete", <CustomersAutocomplete />);
