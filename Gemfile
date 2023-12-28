@@ -93,4 +93,4 @@ group :development do
   gem 'foreman', '~> 0.87.2'
 end
 
-gem 'react-rails', '~> 3.1'
+gem "webpacker", "~> 5.4"

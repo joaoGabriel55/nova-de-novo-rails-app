@@ -76,10 +76,6 @@ GEM
       capybara (~> 3.13, < 4)
       websocket-driver (>= 0.6.5)
     ast (2.4.2)
-    babel-source (5.8.35)
-    babel-transpiler (0.7.0)
-      babel-source (>= 4.0, < 6)
-      execjs (~> 2.0)
     base64 (0.2.0)
     bindex (0.8.1)
     bootsnap (1.17.0)
@@ -124,7 +120,6 @@ GEM
       request_store (>= 1.0)
       ruby2_keywords
     erubi (1.12.0)
-    execjs (2.9.1)
     factory_bot (6.4.2)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.4.2)
@@ -181,7 +176,7 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.15.5-x86_64-linux)
+    nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     parallel (1.24.0)
     parser (3.2.2.4)
@@ -201,6 +196,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (2.2.8)
+    rack-proxy (0.7.7)
+      rack
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (7.0.8)
@@ -235,12 +232,6 @@ GEM
     rake (13.1.0)
     rdoc (6.6.2)
       psych (>= 4.0.0)
-    react-rails (3.1.1)
-      babel-transpiler (>= 0.7.0)
-      connection_pool
-      execjs
-      railties (>= 3.2)
-      tilt
     redis (5.0.8)
       redis-client (>= 0.17.0)
     redis-client (0.19.0)
@@ -288,6 +279,7 @@ GEM
       rubocop-ast (>= 1.30.0, < 2.0)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
+    semantic_range (3.0.0)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
     sidekiq (7.2.0)
@@ -308,7 +300,6 @@ GEM
     tailwindcss-rails (2.1.0-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.3.0)
-    tilt (2.3.0)
     timeout (0.4.1)
     turbo-rails (1.5.0)
       actionpack (>= 6.0.0)
@@ -327,6 +318,11 @@ GEM
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
+    webpacker (5.4.4)
+      activesupport (>= 5.2)
+      rack-proxy (>= 0.6.1)
+      railties (>= 5.2)
+      semantic_range (>= 2.3.0)
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -360,7 +356,6 @@ DEPENDENCIES
   pry (~> 0.14.2)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
-  react-rails (~> 3.1)
   redis
   rspec-rails (~> 6.0.0)
   rubocop
@@ -375,6 +370,7 @@ DEPENDENCIES
   vcr (~> 6.1)
   web-console
   webmock
+  webpacker (~> 5.4)
   will_paginate
 
 RUBY VERSION
