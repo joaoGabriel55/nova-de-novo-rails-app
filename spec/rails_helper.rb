@@ -23,7 +23,7 @@ Capybara.javascript_driver = :apparition
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/vcr'
-  c.hook_into :faraday
+  c.hook_into :webmock
 end
 
 RSpec.configure do |config|

@@ -10,7 +10,7 @@ module Dressmakers
       dressmaker = Dressmaker.find(dressmaker_id)
       dressmaker.update(deleted_at: Time.now)
     rescue StandardError
-      raise Dressmakers::DeleteDressmakerError
+      raise DressmakerErrors::DeleteError
     end
 
     private

@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Customers::SearchPaginateCustomers, type: :service do
   subject(:search_paginate_customers) { described_class.new(search_term:, page:, per_page:) }
   let(:page) { 1 }
-  let(:per_page) { 10 }
+  let(:per_page) { Customers::PER_PAGE }
   let(:search_term) { nil }
   let(:customers) { FactoryBot.create_list(:customer, 20) }
   let!(:searchable_customers) do

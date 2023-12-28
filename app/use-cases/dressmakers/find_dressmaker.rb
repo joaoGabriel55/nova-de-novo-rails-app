@@ -9,7 +9,7 @@ module Dressmakers
     def call
       Dressmaker.find(dressmaker_id)
     rescue ActiveRecord::RecordNotFound
-      raise Dressmakers::DressmakerNotFoundError
+      raise DressmakerErrors::NotFoundError
     end
 
     private

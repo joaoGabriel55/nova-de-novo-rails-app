@@ -22,7 +22,7 @@ RSpec.describe Customers::FindCustomer, type: :service do
       it 'raises a CustomerNotFoundError' do
         expect do
           find_customer.call
-        end.to raise_error(Customers::CustomerNotFoundError, /#{I18n.t('customers.errors.not_found')}/)
+        end.to raise_error(CustomerErrors::NotFoundError, /#{I18n.t('customers.errors.not_found')}/)
       end
     end
   end

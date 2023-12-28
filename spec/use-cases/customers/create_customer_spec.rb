@@ -24,7 +24,7 @@ RSpec.describe Customers::CreateCustomer, type: :service do
       it 'raises a CreateCustomerError' do
         expect do
           create_customer.call
-        end.to raise_error(Customers::CreateCustomerError, /#{I18n.t('customers.errors.create')}/)
+        end.to raise_error(CustomerErrors::CreateError, /#{I18n.t('customers.errors.create')}/)
       end
 
       it 'does not create a new customer' do

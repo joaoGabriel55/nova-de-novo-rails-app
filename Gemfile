@@ -49,6 +49,7 @@ gem 'bootsnap', require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
+gem 'draper', '~> 4.0'
 gem 'faraday'
 gem 'pg_search'
 gem 'redis'
@@ -63,6 +64,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails', '~> 6.2'
   gem 'htmlbeautifier'
+  gem 'pry', '~> 0.14.2'
   gem 'rspec-rails', '~> 6.0.0'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false
@@ -72,9 +74,11 @@ group :test do
   gem 'apparition'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'dotenv', '~> 2.8', '>= 2.8.1'
   gem 'faker', '~> 3.2'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'vcr', '~> 6.1'
+  gem 'webmock'
 end
 
 group :development do
@@ -88,3 +92,5 @@ group :development do
   # gem "spring"
   gem 'foreman', '~> 0.87.2'
 end
+
+gem 'webpacker', '~> 5.4'

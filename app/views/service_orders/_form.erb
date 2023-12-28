@@ -1,0 +1,79 @@
+<% if flash[:notice] %>
+  <%= render 'shared/toast', message: flash[:notice] %>
+<% end %>
+<% if flash[:error] %>
+  <%= render 'shared/toast', message: flash[:error], error: true %>
+<% end %>
+<%= form_with(model: @service_order) do |form| %>
+  <div class='mb-4'>
+    <%= form.label "#{t('service_orders.fields.customer')}*", class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+    <div id='autocomplete'></div>
+  </div>
+  <div class='mb-4'>
+    <%= form.label "#{t('service_orders.fields.dressmaker')}*", class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
+    <%= form.select :dressmaker,
+      options_for_select([], :selected => ''),
+      { include_blank: false },
+      class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500',
+      id: 'dressmaker' %>
+  </div>
+  <div class='flex gap-4 w-full'>
+    <div class="mb-6">
+      <%= form.label :entry_date, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+        <%= t('service_orders.fields.entry_date') %>*
+      <% end %>
+      <div class="relative w-fit">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <%= embedded_svg('calendar_icon', class: 'w-5 h-5 text-gray-500 dark:text-gray-400') %>
+        </div>
+        <%= form.text_field :entry_date,
+          datepicker: true,
+          value: @service_order.entry_date&.strftime('%d/%m/%Y'),
+          "datepicker-format" => "dd/mm/yyyy",
+          required: true,
+          class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+        %>
+      </div>
+    </div>
+    <div class="mb-6">
+      <%= form.label :delivery_date, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+        <%= t('service_orders.fields.delivery_date') %>*
+      <% end %>
+      <div class="relative w-fit">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <%= embedded_svg('calendar_icon', class: 'w-5 h-5 text-gray-500 dark:text-gray-400') %>
+        </div>
+        <%= form.text_field :delivery_date,
+          datepicker: true,
+          value: @service_order.delivery_date&.strftime('%d/%m/%Y'),
+          "datepicker-format" => "dd/mm/yyyy",
+          required: true,
+          class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+        %>
+      </div>
+    </div>
+    <div class="mb-6">
+      <%= form.label :delivery_date, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" do %>
+        <%= t('service_orders.fields.delivery_period') %>*
+      <% end %>
+      <%= form.select :dressmaker,
+        options_for_select(
+          [t('service_orders.fields.period.morning'), t('service_orders.fields.period.afternoon')],
+          :selected => t('service_orders.fields.period.morning')
+        ),
+        { include_blank: false },
+        class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500',
+        id: 'dressmaker' %>
+    </div>
+  </div>
+  <p class='dark:text-white my-4'><%= t('common.required_fields') %></p>
+  <% if @service_order.errors.present? %>
+    <%= render 'shared/error_messages', errors: @service_order.errors.full_messages %>
+  <% end %>
+  <hr class='py-4'>
+  <div class='flex w-full justify-end'>
+    <button type="submit" class="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+      <%= t('common.submit') %>
+    </button>
+  </div>
+<% end %>

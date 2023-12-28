@@ -1,0 +1,86 @@
+<%= render 'layouts/main_wrapper', title: t('service_orders.index') do %>
+  <% if flash[:notice] %>
+    <%= render 'shared/toast', message: flash[:notice] %>
+  <% end %>
+  <% if flash[:error] %>
+    <%= render 'shared/toast', message: flash[:error], error: true %>
+  <% end %>
+  <div class="relative overflow-x-auto p-2 flex flex-col gap-2">
+    <div class='flex justify-between items-center'>
+      <% if @service_orders.present? %>
+        <span class='dark:text-white'>
+          <%= t('service_orders.service_orders_number') %>: <strong><%= @service_orders_count %></strong>
+        </span>
+      <% end %>
+      <% if @search_count.present? && @search_count > 0 %>
+        <div class='mx-2'></div>
+        <span class='dark:text-white'>
+          <%= t('service_orders.search_service_orders_number') %>: <strong><%= @search_count %></strong>
+        </span>
+      <% end %>
+      <div class='flex gap-2'>
+        <a href='/tasks/new' class='ml-auto'>
+          <button type="button" class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
+            <%= t('tasks.new') %>
+          </button>
+        </a>
+        <a href='/service_orders/new' class='ml-auto'>
+          <button type="button" class="text-white w-fit bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800">
+            <%= t('service_orders.new_customer') %>
+          </button>
+        </a>
+      </div>
+    </div>
+    <% if @service_orders.empty? %>
+      <%= render 'shared/empty_message',
+        message: @search_count.present? && @search_count == 0 ? t('service_orders.empty_search') : t('service_orders.empty')
+      %>
+    <% else %>
+      <%= render 'shared/table/wrapper' do %>
+        <%= render 'shared/table/head',
+          columns: [
+            '',
+            t('service_orders.fields.status_service'),
+            t('service_orders.fields.paid'),
+            t('service_orders.fields.total'),
+            t('service_orders.fields.entry_date'),
+            t('service_orders.fields.delivery_date'),
+            t('service_orders.fields.delivery_period'),
+          ]
+        %>
+        <tbody>
+          <% @service_orders.each do |order, index| %>
+            <%= render 'shared/table/row' do %>
+              <%= render 'shared/table/cell', html: true do %>
+                <div class='flex justify-end gap-4'>
+                  <button class='mt-2 ml-2' data-modal-target="staticModal" data-modal-toggle="staticModal" title="<%= t('common.info') %>" type="button">
+                    <span class="material-symbols-outlined">info</span>
+                  </button>
+                </div>
+              <% end %>
+              <%= render 'shared/table/cell', value: t("service_orders.fields.status.#{order.status_service}") %>
+              <%= render 'shared/table/cell', value: order.paid? ? t('common.positive') : t('common.negative') %>
+              <%= render 'shared/table/cell', value: order.total %>
+              <%= render 'shared/table/cell', value: order.entry_date.strftime('%d/%m/%Y %H:%M') %>
+              <%= render 'shared/table/cell', value: order.delivery_date.strftime('%d/%m/%Y %H:%M') %>
+              <%= render 'shared/table/cell', value: t("service_orders.fields.period.#{order.delivery_period}") %>
+              <%= render 'shared/table/cell', html: true do %>
+                <div class='flex justify-end gap-4'>
+                  <a id="edit-<%= order.id %>" href=<%= "/service_orders/#{order.id}" %>>
+                  <button title="<%= t('common.edit') %>" type="button">
+                    <span class="material-symbols-outlined">edit</span>
+                  </button>
+                </a>
+                <%= button_to order.model, method: :delete, id: "delete-#{order.id}", title: t('common.delete') do %>
+                  <%= content_tag :span, "delete", class: "material-symbols-outlined text-red-500" %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </tbody>
+    <% end %>
+  <% end %>
+  <%= render 'shared/table/paginate', items: @service_orders, total_entries: @service_orders_number %>
+</div>
+<% end %>

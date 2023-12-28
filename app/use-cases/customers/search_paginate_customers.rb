@@ -2,9 +2,10 @@
 
 module Customers
   PER_PAGE = 10
+  PAGE = 1
 
   class SearchPaginateCustomers
-    def initialize(page:, search_term: nil, per_page: PER_PAGE)
+    def initialize(page: 1, search_term: nil, per_page: PER_PAGE)
       @search_term = search_term
       @page = page
       @per_page = per_page

@@ -22,18 +22,18 @@ class CustomersController < ApplicationController
 
     Customers::CreateCustomer.new(customer: @customer).call
 
-    flash[:notice] = I18n.t('customers.success_create')
+    flash[:notice] = I18n.t('customers.success.create')
     redirect_to customers_path
-  rescue Customers::CreateCustomerError
+  rescue CustomerErrors::CreateError
     render :new
   end
 
   def update
     Customers::UpdateCustomer.new(customer: @customer, attributes: customer_params).call
 
-    flash[:notice] = I18n.t('customers.success_update')
+    flash[:notice] = I18n.t('customers.success.update')
     redirect_to customer_path(@customer)
-  rescue Customers::UpdateCustomerError => e
+  rescue CustomerErrors::UpdateError => e
     flash[:error] = e.message
     render :show
   end
@@ -41,10 +41,10 @@ class CustomersController < ApplicationController
   def destroy
     Customers::DeleteCustomer.new(id: params[:id]).call
 
-    flash[:notice] = I18n.t('customers.success_destroy')
+    flash[:notice] = I18n.t('customers.success.destroy')
 
     redirect_to customers_path
-  rescue Customers::DeleteCustomerError => e
+  rescue CustomerErrors::DeleteError => e
     flash[:error] = e.message
     redirect_to customers_path
   end

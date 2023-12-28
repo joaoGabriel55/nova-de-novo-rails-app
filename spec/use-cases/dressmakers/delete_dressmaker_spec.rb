@@ -23,7 +23,7 @@ RSpec.describe Dressmakers::DeleteDressmaker, type: :service do
       it 'raises a DeleteDressmakerError' do
         expect do
           delete_dressmaker.call
-        end.to raise_error(Dressmakers::DeleteDressmakerError, /#{I18n.t('dressmakers.errors.delete')}/)
+        end.to raise_error(DressmakerErrors::DeleteError, /#{I18n.t('dressmakers.errors.delete')}/)
       end
     end
   end

@@ -22,7 +22,7 @@ RSpec.describe Dressmakers::UpdateDressmaker, type: :service do
       it 'raises a UpdateDressmakerError' do
         expect do
           update_dressmaker.call
-        end.to raise_error(Dressmakers::UpdateDressmakerError, /#{I18n.t('dressmakers.errors.update')}/)
+        end.to raise_error(DressmakerErrors::UpdateError, /#{I18n.t('dressmakers.errors.update')}/)
         expect(Dressmaker.count).to be(1)
       end
     end

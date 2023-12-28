@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_513_230_409) do
+ActiveRecord::Schema[7.0].define(version: 20_230_712_114_504) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -50,5 +50,35 @@ ActiveRecord::Schema[7.0].define(version: 20_230_513_230_409) do
     t.datetime 'updated_at', null: false
   end
 
+  create_table 'service_orders', force: :cascade do |t|
+    t.date 'entry_date', null: false
+    t.date 'delivery_date', null: false
+    t.integer 'delivery_period', default: 0, null: false
+    t.integer 'status_service', default: 0, null: false
+    t.boolean 'paid', default: false
+    t.bigint 'customer_id', null: false
+    t.bigint 'dressmaker_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.datetime 'deleted_at'
+    t.index ['customer_id'], name: 'index_service_orders_on_customer_id'
+    t.index ['dressmaker_id'], name: 'index_service_orders_on_dressmaker_id'
+  end
+
+  create_table 'task_types', force: :cascade do |t|
+    t.string 'name', null: false
+  end
+
+  create_table 'tasks', force: :cascade do |t|
+    t.string 'name', null: false
+    t.text 'description'
+    t.integer 'price', null: false
+    t.bigint 'service_order_id', null: false
+    t.index ['service_order_id'], name: 'index_tasks_on_service_order_id'
+  end
+
   add_foreign_key 'addresses', 'customers'
+  add_foreign_key 'service_orders', 'customers'
+  add_foreign_key 'service_orders', 'dressmakers'
+  add_foreign_key 'tasks', 'service_orders'
 end

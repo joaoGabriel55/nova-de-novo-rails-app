@@ -23,7 +23,7 @@ RSpec.describe Customers::DeleteCustomer, type: :service do
       it 'raises a DeleteCustomerError' do
         expect do
           delete_customer.call
-        end.to raise_error(Customers::DeleteCustomerError, /#{I18n.t('customers.errors.delete')}/)
+        end.to raise_error(CustomerErrors::DeleteError, /#{I18n.t('customers.errors.delete')}/)
       end
     end
   end

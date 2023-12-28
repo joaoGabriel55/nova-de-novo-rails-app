@@ -9,7 +9,7 @@ module Dressmakers
     def call
       dressmaker.save!
     rescue ActiveRecord::RecordInvalid
-      raise Dressmakers::CreateDressmakerError
+      raise DressmakerErrors::CreateError
     end
 
     private

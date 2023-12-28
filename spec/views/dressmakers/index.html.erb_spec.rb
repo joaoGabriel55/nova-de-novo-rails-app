@@ -85,7 +85,7 @@ RSpec.describe 'dressmakers/index.html.erb', type: :feature do
 
       click_on "delete-#{dressmaker.id}"
 
-      expect(page).to have_selector('div', text: I18n.t('dressmakers.success_destroy'))
+      expect(page).to have_selector('div', text: I18n.t('dressmakers.success.destroy'))
       expect(page).to_not have_selector('th', text: 'John Doe')
     end
   end

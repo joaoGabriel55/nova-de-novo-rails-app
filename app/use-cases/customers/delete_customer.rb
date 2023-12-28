@@ -10,7 +10,7 @@ module Customers
       customer = Customer.find(customer_id)
       customer.update(deleted_at: Time.now)
     rescue StandardError
-      raise Customers::DeleteCustomerError
+      raise CustomerErrors::DeleteError
     end
 
     private
