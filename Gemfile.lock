@@ -356,7 +356,6 @@ DEPENDENCIES
   pry (~> 0.14.2)
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
-  react_on_rails (~> 13.4)
   redis
   rspec-rails (~> 6.0.0)
   rubocop
@@ -369,7 +368,6 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   vcr (~> 6.1)
-  vite_rails (~> 3.0)
   web-console
   webmock
   webpacker (~> 5.4)
