@@ -34,7 +34,7 @@ jobs:
         with:
           bundler-cache: true
       - name: Install node_modules
-        run: npm install
+        run: yarn install
       - name: "Assets precompile"
         run: bundle exec rake assets:precompile
       # Add or replace database setup steps here
