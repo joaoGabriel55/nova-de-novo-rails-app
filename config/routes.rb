@@ -3,19 +3,18 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get '/', to: 'home#index'
+
   mount Sidekiq::Web => '/sidekiq'
-
-  root 'service_orders#index' # TODO: Add a dashboard
-
-  resources :customers
-  resources :dressmakers
-  resources :service_orders
-
+  
   namespace :api do
     namespace :v1 do
+      resources :dressmakers
+      resources :service_orders
+      resources :customers
+      get 'customers', to: 'customers#search'
       get 'states', to: 'states_and_cities#states'
       get 'states/:state', to: 'states_and_cities#state_cities'
-      get 'customers', to: 'customers#search'
     end
   end
 

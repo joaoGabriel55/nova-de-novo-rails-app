@@ -8,9 +8,7 @@ module.exports = {
     "./app/helpers/**/*.rb",
     "./app/javascript/**/*.js",
     "./app/views/**/*.{erb,haml,html,slim}",
-    "./node_modules/flowbite/**/*.js",
-    "./node_modules/tailwind-datepicker-react/dist/**/*.js",
-  ],
+    ],
   theme: {
     screens: {
       sm: "480px",
@@ -68,6 +66,5 @@ module.exports = {
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/typography"),
     require("@tailwindcss/container-queries"),
-    require("flowbite/plugin"),
   ],
 };
