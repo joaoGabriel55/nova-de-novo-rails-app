@@ -9,6 +9,7 @@ module.exports = {
     "./app/javascript/**/*.js",
     "./app/views/**/*.{erb,haml,html,slim}",
     "./node_modules/flowbite/**/*.js",
+    "./node_modules/tailwind-datepicker-react/dist/**/*.js",
   ],
   theme: {
     screens: {
