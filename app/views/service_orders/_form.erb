@@ -4,16 +4,18 @@
 <% if flash[:error] %>
   <%= render 'shared/toast', message: flash[:error], error: true %>
 <% end %>
+<div id='service-order-form'></div>
 <%= form_with(model: @service_order) do |form| %>
   <div class='mb-4'>
     <%= form.label "#{t('service_orders.fields.customer')}*", class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
-    <div id='autocomplete'></div>
+    <div id='customers-autocomplete'></div>
+    <%= react_component 'hello_world' %>
   </div>
   <div class='mb-4'>
     <%= form.label "#{t('service_orders.fields.dressmaker')}*", class: 'block mb-2 text-sm font-medium text-gray-900 dark:text-white' %>
     <%= form.select :dressmaker,
-      options_for_select([], :selected => ''),
-      { include_blank: false },
+      options_for_select(@dressmakers.map { |dressmaker| [dressmaker.name, dressmaker.id] }, :selected => ''),
+      { include_blank: true },
       class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500',
       id: 'dressmaker' %>
   </div>

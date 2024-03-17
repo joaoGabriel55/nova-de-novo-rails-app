@@ -1,3 +1,21 @@
-const { environment } = require('@rails/webpacker')
+const { environment } = require("@rails/webpacker");
 
-module.exports = environment
+const config = {
+  mode: "production", // "production" | "development" | "none"
+  resolve: {
+    extensions: ["*", ".mjs", ".js", ".json"],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: "javascript/auto",
+      },
+    ],
+  },
+};
+
+environment.config.merge(config);
+
+module.exports = environment;
