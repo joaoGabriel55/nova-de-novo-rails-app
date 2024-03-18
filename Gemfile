@@ -94,3 +94,5 @@ group :development do
 end
 
 gem 'webpacker', '~> 5.4'
+
+gem "jsbundling-rails", "~> 1.3"
