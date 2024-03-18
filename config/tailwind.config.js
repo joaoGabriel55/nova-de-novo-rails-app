@@ -1,63 +1,79 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
-const colors = require("tailwindcss/colors");
 
 module.exports = {
+  darkMode: ["class"],
   mode: "jit",
   content: [
     "./public/*.html",
     "./app/helpers/**/*.rb",
-    "./app/javascript/**/*.js",
+    "./app/javascript/**/*.{js,ts,jsx,tsx}",
     "./app/views/**/*.{erb,haml,html,slim}",
-    ],
+  ],
   theme: {
-    screens: {
-      sm: "480px",
-      md: "768px",
-      lg: "976px",
-      xl: "1440px",
-    },
-    colors: {
-      gray: colors.coolGray,
-      blue: colors.lightBlue,
-      red: colors.rose,
-      pink: colors.fuchsia,
-      primary: {
-        50: "#fcf5f4",
-        100: "#fae7e6",
-        200: "#f7d4d1",
-        300: "#f0b5b1",
-        400: "#e58a84",
-        500: "#d6655d",
-        600: "#c6554d",
-        700: "#a23a33",
-        800: "#87332d",
-        900: "#71302b",
-        950: "#3d1512",
-      },
-      secondary: {
-        50: "#fdfaef",
-        100: "#fbf3d9",
-        200: "#f5e4b3",
-        300: "#efd082",
-        400: "#e8b657",
-        500: "#e19c2e",
-        600: "#d38323",
-        700: "#af671f",
-        800: "#8c5120",
-        900: "#71431d",
-        950: "#3d220d",
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
       },
     },
     extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: `var(--radius)`,
+        md: `calc(var(--radius) - 2px)`,
+        sm: "calc(var(--radius) - 4px)",
+      },
       fontFamily: {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
-      spacing: {
-        128: "32rem",
-        144: "36rem",
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
       },
-      borderRadius: {
-        "4xl": "2rem",
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
@@ -66,5 +82,6 @@ module.exports = {
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/typography"),
     require("@tailwindcss/container-queries"),
+    require("tailwindcss-animate")
   ],
 };
