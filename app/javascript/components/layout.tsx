@@ -10,6 +10,7 @@ type Props = {
 export const Layout = ({ title, children }: Props) => {
   return (
     <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 relative">
+      <h1 className="text-xl font-bold px-4 tracking-tight">NOVA DE NOVO</h1>
       <div className="flex h-16 items-center px-4 justify-between">
         <MainNavigation />
         <Avatar className="h-8 w-8">

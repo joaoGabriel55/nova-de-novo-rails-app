@@ -70,7 +70,7 @@ export const MainNavigation = ({
         to="/ordem-servicos"
         className={cn(
           "text-sm font-medium transition-colors hover:text-primary text-muted-foreground",
-          pathname === "/ordem-servicos" && "font-bold text-primary"
+          pathname === "/ordem-servicos" && "font-semibold text-primary"
         )}
       >
         Ordem de Serviços
@@ -79,7 +79,7 @@ export const MainNavigation = ({
         to="/clientes"
         className={cn(
           "text-sm font-medium transition-colors hover:text-primary text-muted-foreground",
-          pathname === "/clientes" && "font-bold text-primary"
+          pathname === "/clientes" && "font-semibold text-primary"
         )}
       >
         Clientes
@@ -88,7 +88,7 @@ export const MainNavigation = ({
         to="/costureiras"
         className={cn(
           "text-sm font-medium transition-colors hover:text-primary text-muted-foreground",
-          pathname === "/costureiras" && "font-bold text-primary"
+          pathname === "/costureiras" && "font-semibold text-primary"
         )}
       >
         Costureiras
