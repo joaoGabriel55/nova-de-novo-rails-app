@@ -9,7 +9,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "jsx": "react"
+    "jsx": "react",
+    "lib": ["es6", "dom", "es2016"]
   },
   "include": ["app/javascript/"]
 }
