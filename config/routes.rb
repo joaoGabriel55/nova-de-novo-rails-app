@@ -12,7 +12,6 @@ Rails.application.routes.draw do
       resources :dressmakers
       resources :service_orders
       resources :customers
-      get 'customers', to: 'customers#search'
       get 'states', to: 'states_and_cities#states'
       get 'states/:state', to: 'states_and_cities#state_cities'
     end
