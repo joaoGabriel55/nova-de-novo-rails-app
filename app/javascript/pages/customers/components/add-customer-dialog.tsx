@@ -19,7 +19,7 @@ export const AddCustomerDialog = () => {
 
   return (
     <Dialog defaultOpen>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent onClose={onDismiss} className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Cadastrar Cliente</DialogTitle>
         </DialogHeader>
