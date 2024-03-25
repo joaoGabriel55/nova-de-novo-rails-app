@@ -1,10 +1,8 @@
 import React from "react";
 
 import { Button } from "@/lib/components/button";
-import { Input } from "@/lib/components/input";
 import { Link, Outlet } from "react-router-dom";
 import { CustomersTable } from "./components/customers-table";
-import { Search } from "lucide-react";
 import { SearchCustomers } from "./components/search-customers";
 
 export const Customers = () => {

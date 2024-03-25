@@ -7,7 +7,7 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import { Layout } from "./layout";
 import { NoMatch } from "./no-match";
 
-export const routes = createHashRouter([
+export const router = createHashRouter([
   {
     element: <Layout />,
     children: [
@@ -42,5 +42,5 @@ export const routes = createHashRouter([
 ]);
 
 export const AppRoutes = () => {
-  return <RouterProvider router={routes} />;
+  return <RouterProvider router={router} />;
 };
