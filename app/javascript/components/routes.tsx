@@ -1,5 +1,5 @@
 import { Customers } from "@/pages/customers";
-import { AddCustomerDialog } from "@/pages/customers/components/add-customer-dialog";
+import { AddCustomer } from "@/pages/customers/add-customer";
 import { Dressmakers } from "@/pages/dressmakers";
 import { ServiceOrders } from "@/pages/service-orders";
 import * as React from "react";
@@ -22,12 +22,10 @@ export const router = createHashRouter([
       {
         path: "clientes",
         element: <Customers />,
-        children: [
-          {
-            path: "cadastrar",
-            element: <AddCustomerDialog />,
-          },
-        ],
+      },
+      {
+        path: "/clientes/cadastrar",
+        element: <AddCustomer />,
       },
       {
         path: "/costureiras",

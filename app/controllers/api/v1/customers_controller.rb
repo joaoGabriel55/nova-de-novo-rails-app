@@ -12,22 +12,14 @@ class Api::V1::CustomersController < ApplicationController
     render json: result
   end
 
-  def new
-    @customer = Customer.new
-    @customer.build_address
-  end
-
-  def show; end
-
   def create
     @customer = Customer.new(customer_params)
 
     Customers::CreateCustomer.new(customer: @customer).call
 
-    flash[:notice] = I18n.t('customers.success.create')
-    redirect_to customers_path
+    render json: @customer
   rescue CustomerErrors::CreateError
-    render :new
+    render json: { error: I18n.t('customers.errors.create') }, status: :unprocessable_entity
   end
 
   def update

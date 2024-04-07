@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Button } from "@/lib/components/button";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CustomersTable } from "./components/customers-table";
 import { SearchCustomers } from "./components/search-customers";
 
@@ -15,7 +15,6 @@ export const Customers = () => {
         </Link>
       </div>
       <CustomersTable />
-      <Outlet />
     </>
   );
 };

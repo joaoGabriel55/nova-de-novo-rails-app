@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@/tests/test-utils";
 import { Customers } from ".";
-import { useCustomers } from "./hooks/useCustomers";
+import { useCustomers } from "../../infra/hooks/customers/use-customers";
 import { Customer } from "@/domain/customer";
 
 vi.mock("./hooks/useCustomers");
@@ -37,8 +37,17 @@ describe("Customers Page", () => {
           email: "j@j.com",
           createdAt: "2022-01-01",
           updatedAt: "2022-01-01",
-          phone: "",
-          whatsapp: "",
+          phoneNumber: "",
+          whatsapp: "333-333-3333",
+          address: {
+            street: "Rua",
+            number: "1",
+            complement: "",
+            neighborhood: "Floriano",
+            city: "Natal",
+            state: "RN",
+            zipCode: "300000-000",
+          },
         },
       ],
     });

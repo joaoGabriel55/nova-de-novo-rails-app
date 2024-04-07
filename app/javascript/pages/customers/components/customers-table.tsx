@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Pagination } from "@/components/pagination";
+import { useCustomers } from "@/infra/hooks/customers/use-customers";
 import { Button } from "@/lib/components/button";
 import {
   Table,
@@ -15,7 +16,6 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useCustomers } from "../hooks/useCustomers";
 import { columns } from "./columns";
 
 export const CustomersTable = () => {

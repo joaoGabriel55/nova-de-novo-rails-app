@@ -7,15 +7,14 @@ const TITLES: Record<string, string> = {
   "/": "Dashboard",
   "/ordem-servicos": "Ordem de Serviços",
   "/clientes": "Clientes",
+  "/clientes/cadastrar": "Novo Cliente",
   "/costureiras": "Costureiras",
 };
 
 export const Layout = () => {
   const { pathname } = useLocation();
 
-  const basePath = `/${pathname.split("/")[1]}`;
-  const paths = Object.keys(TITLES);
-  const headerTitle = paths.includes(basePath) ? TITLES[basePath] : "";
+  const headerTitle = TITLES[pathname];
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 relative">
