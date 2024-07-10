@@ -37,10 +37,9 @@ class Api::V1::CustomersController < ApplicationController
 
     flash[:notice] = I18n.t('customers.success.destroy')
 
-    redirect_to customers_path
-  rescue CustomerErrors::DeleteError => e
-    flash[:error] = e.message
-    redirect_to customers_path
+    render json: {}, status: :no_content
+  rescue CustomerErrors::DeleteError
+    render json: { error: I18n.t('customers.errors.delete') }, status: :unprocessable_entity
   end
 
   private

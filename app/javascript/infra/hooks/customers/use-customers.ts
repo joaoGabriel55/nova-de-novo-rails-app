@@ -12,6 +12,7 @@ export const useCustomers = () => {
     data: customers,
     isError,
     isPending,
+    refetch: refetchCustomers,
   } = useQuery({
     queryKey: [`customers/${params}/${search}`, page, search],
     queryFn: () => getCustomers({ page, search }),
@@ -38,5 +39,6 @@ export const useCustomers = () => {
     page,
     goToNextPage,
     goToPreviousPage,
+    refetchCustomers,
   };
 };

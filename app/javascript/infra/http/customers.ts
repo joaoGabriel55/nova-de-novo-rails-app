@@ -39,3 +39,7 @@ export const createCustomer = async (customer: Customer.CreateType) => {
 
   return createdCustomer as Customer.Type;
 };
+
+export const removeCustomer = async (id: number) => {
+  await api.delete(`/api/v1/customers/${id}`);
+};
